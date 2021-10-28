@@ -344,6 +344,12 @@ class Usuario {
 
  console.log(pablo instanceof Usuario); 
 
+ console.log(Jose instanceof Alumno); 
+
+ console.log(pablo instanceof Alumno); 
+
+ console.log(Jose instanceof Usuario); 
+
 
 
 
