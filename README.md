@@ -1,21 +1,17 @@
 # Js-Desarrollo-util
 
-Que es la Herencia?
-Imaginemos que estamos creando nuestra plataforma, nuestra academia
-Creamos nuestros usuarios que tendran un nombre, un correo electronico y una contraseña
-
-Dentro de esa academia puede haber distintos tipos de usuarios
-Profesores,Alumnos, invitados
+Que es una excepcion?
 
 
-Todos estos usuarios al final comparten uan misma funcionalidad, es la funcionalidad basica, todos son usuarios, ejemplo login todos pueden hacerlo con usuario y contraseña
+Son situaciones anomalas que se producen en nuestro codigo y que nos obligana desviar la ejecucion desde el flujo 
+principal hacia un flujo alternativo 
 
-Porque engo qu mover esa logica deel login y moverla a cada una de las clases, si puedo tener una clase base de la que hereden todos a la que extiendan todas las demas  
+Tipico caso en elque estamos dividiendo numeros y podemos didvidir entre dos entre 3 entre 7
+Pero cuando llega 0 no se puede dividir entre 0
+Entonces tenemso que darle un tratamiento especial distinto and 2 3 7
 
-Mantener la funcionalidad en esa clase base y en cada una de ellas escribir la funcionalidad especifica
+Estas excepciones pueden darse tanto enm tiempo de compilacion o durante el tiempo de ejecucion
+En javascript unicamente pueden darse en tiempo de ejecucion , porque la ejecucion de javascript implical la  compilacion mas la ejecucion 
+Unimos estos dos procesos en uno solo 
 
-EN el alumno escribo lo propio deel alumno 
-En el profesor escribo lo propio de el profesor
-Y en el usuario lo comun de todos
-
-
+Porque javascript si es un lenguaje compilado aunque no se compila 

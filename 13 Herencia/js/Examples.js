@@ -296,7 +296,7 @@ class Usuario {
  //Instance of
  //nos sirve para comparar de que tipo es un objeto
 
-
+ 
 
 
  class Usuario {
@@ -342,13 +342,28 @@ class Usuario {
 
 
 
- console.log(pablo instanceof Usuario); 
+ console.log(pablo instanceof Usuario);  //True
 
- console.log(Jose instanceof Alumno); 
+ console.log(Jose instanceof Alumno); //True
 
- console.log(pablo instanceof Alumno); 
+ console.log(pablo instanceof Alumno); //False
 
- console.log(Jose instanceof Usuario); 
+ console.log(Jose instanceof Usuario); //True   //Jose esinstance de usuario Alumno y objeto
+
+ //Pero jose era un alumno 
+ //Pero instance of internamente 
+
+
+console.loglog(Jose); // En consola Tendriamos  Alumno- que no es instncia de usuario- bajamos hasta al proptotype qeu dice que es un 
+//usuario , va bajando en cascada hasta que llega al final , en lo uqe solo nos qeuda object 
+console.log(Jose instanceof object); //True
+
+console.log( [] instanceof object); //True
+
+//Todos los objetos son instancia de object
+
+
+
 
 
 
