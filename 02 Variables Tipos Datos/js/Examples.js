@@ -311,13 +311,13 @@ console.log(typeof [])//Object
 //OPERANDO ENTRE STRINGS Y NUMBERS
 
 
-let resultado = "2" + 2;
+let resultado = "2" + 2; //22
 
 //resultado = resultado *2;
 
-resultado * = 2;
+resultado *= 2;//44
 
 
 
-console.log(resultado);  
-
+console.log(resultado);  //44 Esto es devido por la conversion de tipos implicita, es decir/cuando trabajamos
+//con tipos de datos distintos lo que hace javascript es convertirlos a el mismo tipo de datos
