@@ -9,3 +9,4 @@ const multiplicarPorDos = function (numero) {
 const suma = sumar(2,3);
 const multiplicacion = multiplicarPorDos (suma);
 console.log(multiplicacion);
+ 

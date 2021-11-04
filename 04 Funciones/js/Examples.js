@@ -183,15 +183,29 @@ const obtenerSaludo = function (nombre) {
 ARROW FUNCTIONS
 
 */
-
 const sumar = function (a,b) {
-    return a * b
-}
-
-const multiplicarPorDos = function (numero) {
+    return a + b
+  }
+  
+  const multiplicarPorDos = function (numero) {
     return numero * 2
-}
+  }
+  
+  const suma = sumar(2,3);
+  const multiplicacion = multiplicarPorDos (suma);
+  console.log(multiplicacion);
+ 
+  
+  //Convirtiendo  ARROW
+  
+  const multiplicarPorDos =  (numero) =>{
+    return numero * 2
+  }
 
-const suma = sumar(2,3);
-const multiplicacion = multiplicarPorDos (suma);
-console.log(multiplicacion);
+ 
+  const multiplicarPorDos =  numero =>{
+    return numero * 2
+  }
+
+  const multiplicarPorDos =  numero => numero * 2
+  
