@@ -1,19 +1,15 @@
-
 /*
 
 */
-
 
 /*
     ||    console.log(``);    ` `
 */
 
-
 /*
 ------------------------------------------------------------
 ------------------------------------------------------------
 */
-
 
 //ARRAYS
 
@@ -29,25 +25,30 @@ Se recomienda que sean valores  el mismo tipo los que se almacenan, para poder r
 ------------------------------------------------------------
 */
 
-const miArray = ['hola', 5, true, null, undefined ,{a:2,b:3}, () => 'hola', [1,2,3]]
-
+const miArray = [
+  "hola",
+  5,
+  true,
+  null,
+  undefined,
+  { a: 2, b: 3 },
+  () => "hola",
+  [1, 2, 3],
+];
 
 console.log(miArray);
 console.log(miArray[0]);
 
 //Reasignando array
 
-miArray[4]= 'Pablo';
+miArray[4] = "Pablo";
 
 console.log(miArray);
-
 
 /*
 ------------------------------------------------------------
 ------------------------------------------------------------
 */
-
-
 
 /*
 ------------------------------------------------------------
@@ -60,17 +61,23 @@ Propiedad length
 ------------------------------------------------------------
 */
 
-
-const miArray = ['hola', 5, true, null, undefined ,{a:2,b:3}, () => 'hola', [1,2,3]]
-console.log(typeof miArray); 
-console.log( miArray.length);//8 Devuelve numero elemetnos hemos introducido al array  
+const miArray = [
+  "hola",
+  5,
+  true,
+  null,
+  undefined,
+  { a: 2, b: 3 },
+  () => "hola",
+  [1, 2, 3],
+];
+console.log(typeof miArray);
+console.log(miArray.length); //8 Devuelve numero elemetnos hemos introducido al array
 
 /*
 ------------------------------------------------------------
 ------------------------------------------------------------
 */
-
-
 
 /*
 ------------------------------------------------------------
@@ -80,42 +87,34 @@ PUSH, POP ,SHIFT , UNSHIFTH
 ------------------------------------------------------------
 */
 
-const miArray = [1,2,3,4,5,6];
+const miArray = [1, 2, 3, 4, 5, 6];
 
 //PUSH Añade elelmento al final de el array 7
 
-miArray.push(7);  
-console.log( miArray);//[1,2,3,4,5,6,7]
+miArray.push(7);
+console.log(miArray); //[1,2,3,4,5,6,7]
 
-//UNSHIFT Añade elemento al principio de el array 
+//UNSHIFT Añade elemento al principio de el array
 
 const PrimerElemento = miArray.unshift(0);
 
-console.log(PrimerElemento, miArray);// [0,1,2,3,4,5,6,7]
-
+console.log(PrimerElemento, miArray); // [0,1,2,3,4,5,6,7]
 
 //POP extraer el Ultimo elemento y lo almacena
 const ultimoElemento = miArray.pop();
 
-console.log(ultimoElemento);//6
+console.log(ultimoElemento); //6
 
-
-//SHIFT Extraer el primer elemento 
+//SHIFT Extraer el primer elemento
 
 const PrimerElemento = miArray.shift();
 
-console.log(PrimerElemento, miArray);//1
-
-
-
-
+console.log(PrimerElemento, miArray); //1
 
 /*
 ------------------------------------------------------------
 ------------------------------------------------------------
 */
-
-
 
 /*
 ------------------------------------------------------------
@@ -130,37 +129,28 @@ Delete count Cuantos lementos a partirde la posicion queremos eliminar
 Array de los elementos que queramos insertar a continuacion
 ------------------------------------------------------------
 */
-const miArray = [1,2,3,4,5,6];
+const miArray = [1, 2, 3, 4, 5, 6];
 
-miArray.splice(3,0,'hola')//
-console.log(miArray) //[1,2,3,'hola',4,5,6];
-
-
+miArray.splice(3, 0, "hola"); //
+console.log(miArray); //[1,2,3,'hola',4,5,6];
 
 //Añadiendo varios
-const miArray = [1,2,3,4,5,6];
+const miArray = [1, 2, 3, 4, 5, 6];
 
-miArray.splice(3,0,'hola','Pablo','Jose')//
-console.log(miArray) //[1,2,3,'hola','Pablo','Jose',4,5,6];
+miArray.splice(3, 0, "hola", "Pablo", "Jose"); //
+console.log(miArray); //[1,2,3,'hola','Pablo','Jose',4,5,6];
 
+//Insertando array, pero el array va a ser un elemento
+//Nos inserte el array com un unico elemento
+const miArray = [1, 2, 3, 4, 5, 6];
 
-
-//Insertando array, pero el array va a ser un elemento 
-//N os inserte e larray com un unico elemento
-const miArray = [1,2,3,4,5,6];
-
-miArray.splice(3,0,['hola','Pablo','Jose'])
-console.log(miArray) //[1,2,3,array(3),4,5,6];
-
-
-
+miArray.splice(3, 0, ["hola", "Pablo", "Jose"]);
+console.log(miArray); //[1,2,3,array(3),4,5,6];
 
 /*
 ------------------------------------------------------------
 ------------------------------------------------------------
 */
-
-
 
 /*
 ------------------------------------------------------------
@@ -171,49 +161,44 @@ Realizar una operacion sobre cada uo de los elementos de el Array
 */
 
 //Imprimir un consol.log por cada elemento de el Array ,forEach() aqui lo que recibiremos es una function
-//que sera un callback , que tendra tres parametros 
+//que sera un callback , que tendra tres parametros
 //
 
-const miArray = ['1','2','3','4','5','6'];
+const miArray = ["1", "2", "3", "4", "5", "6"];
 
 //const foreachFunction = (elemento,indice,array) =>{}
 
+miArray.forEach((elem, index, array) => {
+  console.log(elem, index);
+});
 
-miArray.forEach((elem,index,array)=> {
- console.log(elem,index);
-})
-
-
-
-
-
-
-//Imprimiendo con tres parametros 
-//El array como tercer parametro se utilizaria Si nosotros queremos crear un array nuevo que 
+//Imprimiendo con tres parametros
+//El array como tercer parametro se utilizaria Si nosotros queremos crear un array nuevo que
 //depende de los valores , ejemplo quiero sumar a cada elemento
-//el del a izquierda , lo que hago es utilizar este array dentro de le for each para calcular 
+//el del a izquierda , lo que hago es utilizar este array dentro de le for each para calcular
 //el nuevo valor
-const miArray = ['uno','2','3','4'];
+const miArray = ["uno", "2", "3", "4"];
 
+miArray.forEach((elem, index, array) => {
+  console.log(elem, index, array);
+});
 
+//Ejemplo imprimiendo elmento mas dos
+
+const miArray = ["uno", "2", "3", "4"];
+
+/*
 miArray.forEach((elem,index,array)=> {
- console.log(elem,index,array);
+ console.log(elem +2 ,index);
 })
+*/
+miArray.forEach((elem, index, array) => {
+  console.log(Number(elem) + 2, index);
+});
 
+//Ejemplo multiplicando elemento por index
 
-
-
-
-
-
-
-
-
-//Ejemplo imprimiendo elento mas dos 
- 
-
-const miArray = ['uno','2','3','4'];
-
+const miArray = ["uno", "2", "3", "4"];
 
 /*
 miArray.forEach((elem,index,array)=> {
@@ -221,49 +206,14 @@ miArray.forEach((elem,index,array)=> {
 })
 */
 
-
-miArray.forEach((elem,index,array)=> {
-  console.log(Number(elem )+2 ,index)
- })
-
-
-
-
-
-
-
-
-//Eemplo multiplicando elemento por index
- 
-
-const miArray = ['uno','2','3','4'];
-
-
-/*
-miArray.forEach((elem,index,array)=> {
- console.log(elem +2 ,index);
-})
-*/
-
-
-miArray.forEach((elem,index,array)=> {
-  console.log(elem  *index)
- })
-
-
-
-
-
-
-
-
+miArray.forEach((elem, index, array) => {
+  console.log(elem * index);
+});
 
 /*
 ------------------------------------------------------------
 ------------------------------------------------------------
 */
-
-
 
 /*
 ------------------------------------------------------------
@@ -281,10 +231,8 @@ El array en maps siempre va a tener el mismo numero de elementos que lo que teni
 ------------------------------------------------------------
 */
 
-
-//Tenemos estos numeros y queremos sumarle tres a cada numero 
+//Tenemos estos numeros y queremos sumarle tres a cada numero
 // Las funciones flecha se crearon para evitar todo este codigo
-
 
 /*
 let miArray = [1,2,3,4,5];
@@ -293,23 +241,16 @@ let miArray = [1,2,3,4,5];
    console.log(miArray)
 */
 
+let miArray = [1, 2, 3, 4, 5];
 
-let miArray = [1,2,3,4,5];
+miArray = miArray.map((i) => i + 3);
 
-
-  miArray =miArray.map(i => i+3)
-
-  console.log(miArray)
- 
-
-
-
+console.log(miArray);
 
 /*
 ------------------------------------------------------------
 ------------------------------------------------------------
 */
-
 
 /*
 ------------------------------------------------------------
@@ -324,110 +265,87 @@ Ejercicio con MAP,FOREACH REDUCE
 //cada uno de los elementos
 
 const facturas = [
-{
-    precio:23,
-    cantidad:1, 
-},
-{
-    precio:19,
-    cantidad:2, 
-},
-{
-    precio:14,
-    cantidad:4, 
-},
-{
-    precio:22,
-    cantidad:1, 
-}
-]
+  {
+    precio: 23,
+    cantidad: 1,
+  },
+  {
+    precio: 19,
+    cantidad: 2,
+  },
+  {
+    precio: 14,
+    cantidad: 4,
+  },
+  {
+    precio: 22,
+    cantidad: 1,
+  },
+];
 
 const IVA = 1.21;
-const totalFactura = facturas.map(i => i.precio *i.cantidad  * IVA)
+const totalFactura = facturas.map((i) => i.precio * i.cantidad * IVA);
 
 console.log(totalFactura);
 
-
-
-
-
-
-
-
-
-
 //Ahora utilizando foreach
 const facturas = [
-    {
-        precio:23,
-        cantidad:1, 
-    },
-    {
-        precio:19,
-        cantidad:2, 
-    },
-    {
-        precio:14,
-        cantidad:4, 
-    },
-    {
-        precio:22,
-        cantidad:1, 
-    }
-    ]
-    
-    const IVA = 1.21;
-    const totalFactura = faturas.map(i => i.precio *i.cantidad  * IVA)
-    
-    totalFactura.forEach((i,index) => console.log("Elemento", index,i)) 
+  {
+    precio: 23,
+    cantidad: 1,
+  },
+  {
+    precio: 19,
+    cantidad: 2,
+  },
+  {
+    precio: 14,
+    cantidad: 4,
+  },
+  {
+    precio: 22,
+    cantidad: 1,
+  },
+];
 
+const IVA = 1.21;
+const totalFactura = faturas.map((i) => i.precio * i.cantidad * IVA);
 
+totalFactura.forEach((i, index) => console.log("Elemento", index, i));
 
-
-
-
-
-//Sumando todo con 
+//Sumando todo con
 /*
   let  total = 0;
     totalFactura.forEach((i) => total += i) 
 */
 
+const facturas = [
+  {
+    precio: 23,
+    cantidad: 1,
+  },
+  {
+    precio: 19,
+    cantidad: 2,
+  },
+  {
+    precio: 14,
+    cantidad: 4,
+  },
+  {
+    precio: 22,
+    cantidad: 1,
+  },
+];
 
-  const facturas = [
-    {
-        precio:23,
-        cantidad:1, 
-    },
-    {
-        precio:19,
-        cantidad:2, 
-    },
-    {
-        precio:14,
-        cantidad:4, 
-    },
-    {
-        precio:22,
-        cantidad:1, 
-    }
-    ]
-    
-    const IVA = 1.21;
-    const totalFactura = facturas.map(i => i.precio *i.cantidad  * IVA)
-    
-    let  total = 0;
-    totalFactura.forEach((i) => total += i) 
+const IVA = 1.21;
+const totalFactura = facturas.map((i) => i.precio * i.cantidad * IVA);
 
+let total = 0;
+totalFactura.forEach((i) => (total += i));
 
-    console.log(total);
+console.log(total);
 
-
-
-
-
-
-    
 /*
  METODO REDUCE
  Lo que hace es transformar todo un array siguiendo unas reglas sumarlos realizar distintas operaciones
@@ -441,125 +359,108 @@ const facturas = [
 
 */
 
-
 // Lo que queremos es trasnformar todo este array total factura en un numero
 
 const facturas = [
-    {
-        precio:23,
-        cantidad:1,            //A
-    },
-    {
-        precio:19,           //B
-        cantidad:2, 
-    },
-    {
-        precio:14,
-        cantidad:4, 
-    },
-    {
-        precio:22,
-        cantidad:1, 
-    }
-    ]
-    
-    const IVA = 1.21;
-    const totalFactura = facturas.map(i => i.precio *i.cantidad  * IVA)
-    
-    const total = totalFactura.reduce ((a,b) => a+b)
+  {
+    precio: 23,
+    cantidad: 1, //A
+  },
+  {
+    precio: 19, //B
+    cantidad: 2,
+  },
+  {
+    precio: 14,
+    cantidad: 4,
+  },
+  {
+    precio: 22,
+    cantidad: 1,
+  },
+];
 
-    console.log(total);
+const IVA = 1.21;
+const totalFactura = facturas.map((i) => i.precio * i.cantidad * IVA);
 
+const total = totalFactura.reduce((a, b) => a + b);
 
+console.log(total);
 
+// Haciendo console.log de a y de b
 
-    // Haciendo console.log de a y de b
+const facturas = [
+  {
+    precio: 23,
+    cantidad: 1, //A
+  },
+  {
+    precio: 19, //B
+    cantidad: 2,
+  },
+  {
+    precio: 14,
+    cantidad: 4,
+  },
+  {
+    precio: 22,
+    cantidad: 1,
+  },
+];
 
-    const facturas = [
-        {
-            precio:23,
-            cantidad:1,          //A
-        },
-        {
-            precio:19,           //B
-            cantidad:2, 
-        },
-        {
-            precio:14,
-            cantidad:4, 
-        },
-        {
-            precio:22,
-            cantidad:1, 
-        }
-        ]
-        
-        const IVA = 1.21;
+const IVA = 1.21;
 
-        const totalFactura = facturas.map(i => i.precio *i.cantidad  * IVA)
-        
-        console.log(totalFactura)
+const totalFactura = facturas.map((i) => i.precio * i.cantidad * IVA);
 
+console.log(totalFactura);
 
-        const total = totalFactura.reduce ((a,b) => {
-            console.log(a,b)
-            return a + b
-        })
-    
-        console.log(total);
+const total = totalFactura.reduce((a, b) => {
+  console.log(a, b);
+  return a + b;
+});
 
+console.log(total);
 
+// Minimizando el codigo del map
 
+const facturas = [
+  {
+    precio: 23,
+    cantidad: 1, //A
+  },
+  {
+    precio: 19, //B
+    cantidad: 2,
+  },
+  {
+    precio: 14,
+    cantidad: 4,
+  },
+  {
+    precio: 22,
+    cantidad: 1,
+  },
+];
 
+//const IVA = 1.21;
 
+//const totalFactura = facturas.map(i => i.precio *i.cantidad  * IVA)
 
-        // Minimizando el codigo del map
+//console.log(totalFactura)
 
-        const facturas = [
-            {
-                precio:23,
-                cantidad:1,          //A
-            },
-            {
-                precio:19,           //B
-                cantidad:2, 
-            },
-            {
-                precio:14,
-                cantidad:4, 
-            },
-            {
-                precio:22,
-                cantidad:1, 
-            }
-            ]
-            
-            //const IVA = 1.21;
-    
-            //const totalFactura = facturas.map(i => i.precio *i.cantidad  * IVA)
-            
-            //console.log(totalFactura)
-    
-    
-            const total =  facturas.map(i => i.precio * i.cantidad).reduce((a,b) => {
-                console.log(a,b)
-                return a + b
-            })
-        
-            console.log(total);
+const total = facturas
+  .map((i) => i.precio * i.cantidad)
+  .reduce((a, b) => {
+    console.log(a, b);
+    return a + b;
+  });
 
-
-
-
-
-
-
+console.log(total);
 
 /*
 ------------------------------------------------------------
 ------------------------------------------------------------
 */
-
 
 /*
 ------------------------------------------------------------
@@ -572,38 +473,27 @@ FILTER
 ------------------------------------------------------------
 */
 
-// Cuyo valor sea mayor de 40 
+// Cuyo valor sea mayor de 40
 
+const facturas = [
+  {
+    precio: 23,
+    cantidad: 1, //A
+  },
+  {
+    precio: 19, //B
+    cantidad: 2,
+  },
+  {
+    precio: 14,
+    cantidad: 4,
+  },
+  {
+    precio: 22,
+    cantidad: 1,
+  },
+];
 
-    
+const total = facturas.map((i) => i.precio * i.cantidad).filter((i) => i > 30);
 
-        const facturas = [
-            {
-                precio:23,
-                cantidad:1,          //A
-            },
-            {
-                precio:19,           //B
-                cantidad:2, 
-            },
-            {
-                precio:14,
-                cantidad:4, 
-            },
-            {
-                precio:22,
-                cantidad:1, 
-            }
-            ]
-            
-    
-            const total =  facturas.map(i => i.precio * i.cantidad).filter(i => i > 30) 
-        
-            console.log(total);
-
-
-
-
-
-
-
+console.log(total);

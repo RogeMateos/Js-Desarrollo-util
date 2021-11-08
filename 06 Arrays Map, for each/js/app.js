@@ -1,32 +1,7 @@
+const miArray = ["1", "2", "3", "4", "5", "6"];
 
+//const foreachFunction = (elemento,indice,array) =>{}
 
-        const facturas = [
-          {
-              precio:23,
-              cantidad:1,          //A
-          },
-          {
-              precio:19,           //B
-              cantidad:2, 
-          },
-          {
-              precio:14,
-              cantidad:4, 
-          },
-          {
-              precio:22,
-              cantidad:1, 
-          }
-          ]
-          
-  
-          const total =  facturas.map(i => i.precio * i.cantidad).filter(i => i > 30) 
-      
-          console.log(total);
-
-
-
-
-
-
-
+miArray.forEach((elem, index, array) => {
+  console.log(elem, index);
+});
