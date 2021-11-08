@@ -26,4 +26,18 @@ const item2 = {
 const item3 = item2;
 item3.precio = 23;
 
-console.log(item3);
+console.log(item3);// precio 23 es correcto
+
+console.log(item2);// 23 , deberia de ser 25 
+
+
+/*
+Esto esta pasando poque item2 e item3 son exactamente el mismo Objeto 
+Primitivos se llaman por como se almacenan , almacenan su valor directamente
+En un objeto no almacenamos el valor directo lo que almacenaremos es una referencia un puntero 
+que hara referencia a donde ira esta localizado ese objeto en memoria
+ciando copianos este objeto con igual  const item3 = item2; lo que estamos copiando es la referencia ,
+tenemos una referencia aqui, otra aqui  y las dos apuntan al mismo Objeto
+
+*/
+
