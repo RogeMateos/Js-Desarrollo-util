@@ -74,8 +74,8 @@ function() {}
 
 const valor = []   Array vacio es truthy 
 
-
-
+const valor = {} Objeto   es truthy
+ 
 ------------------------------------------------------
 */
 
@@ -90,4 +90,4 @@ else console.log("Falsy")
 // cuando queremos saber si un array esta vacio o no utilizamos length
 //Si es cero cero es falsy dentro de los numeros
 
-const valor = [].length;//false
+const valor = [].length;//false because it is 0 o legnth
