@@ -22,3 +22,21 @@ switch  (numero) {
         console.log("Otro numetro")
 }
 
+
+//Agrupando cases
+
+
+const numero = 0;
+
+switch  (numero) {
+  case 0:
+  case 1:
+  case 2:
+    console.log('Dos');
+    break;
+  case 3:
+    console.log('Tres');
+    break;
+    default:
+        console.log("Otro numetro")
+}
