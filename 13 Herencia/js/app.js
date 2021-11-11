@@ -14,6 +14,7 @@ class Usuario {
  }
 
 //HIJO
+//En constructor y agrgarcurso en consola pondria que es Prototypo se usuario pero en realidad es de Alumno
  class Alumno extends Usuario {
   constructor (nombre,email,password) {
     super (nombre,email,password)
