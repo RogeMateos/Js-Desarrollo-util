@@ -130,7 +130,7 @@ static saludar(){
 
 //const cursoJS = new  Curso ('javascript',1);
 
-CursoJS.saludar();
+Curso.saludar();
 console.log(Curso.BASE_URL); 
 
 
@@ -138,5 +138,20 @@ console.log(Curso.BASE_URL);
 
 
 
-//Ejemplo basico de Utilidad que tendria esto
+
+
+
+/*
+Ejempllo basico 
+Date,now()
+Por ejemplo Date.now() para calcular el momento actual, ponemos eso en la consola, no necesito crear una fecha necesito
+en que momento estoy ahora
+Aqui estoy haciendo referencia a la clase fecha
+
+New date()
+Pero si quiero crear una fecha con el dia de hoy tengo que hacer un  new Date() y en este momento creo este new date
+Aqui tengo instanciado un objeto fecha
+*/
+
+
 
