@@ -2,10 +2,10 @@
 
 //Getters setters
 // Quiero Garantizarme que aunque alguien meta la pata esto se siga cumpliendo
-//Ejemplo cunado alguien diga que  esto cursoJS.dificultad = 1; es igual a uno , pues que por lo menos este uno
+//Ejemplo cuando alguien diga que  esto cursoJS.dificultad = 1; es igual a uno , pues que por lo menos este uno
 //Sea entre 0-5
 
-//Cuando hacemos un curso  cursoJS.dificultad = 1; no estemos llamando a la propiedad sino que entremos por
+//Cuando hacemos un curso  cursoJS.dificultad = 1; no estamos llamando a la propiedad sino que entramos por
 // get dificultad() {
 //return this.dificultad;
 //}
@@ -77,7 +77,7 @@ class Curso {
 
 
 
-//Si ejecuto esto tendria uno u lo que estamos es ejecuando el getter
+//Si ejecuto esto tendria uno u lo que estamos es ejecut   ando el getter
 class Curso {
    
   constructor(titulo,dificultad) {

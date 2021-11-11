@@ -1,319 +1,142 @@
 
+/*
 
-//Getters setters
-// Quiero Garantizarme que aunque alguien meta la pata esto se siga cumpliendo
-//Ejemplo cunado alguien diga que  esto cursoJS.dificultad = 1; es igual a uno , pues que por lo menos este uno
-//Sea entre 0-5
+*/
 
-//Cuando hacemos un curso  cursoJS.dificultad = 1; no estemos llamando a la propiedad sino que entremos por
-// get dificultad() {
-//return this.dificultad;
-//}
+/*
+    ||    console.log(``);    ` `    ||
+*/
 
-//cuando hacemos un    cursoJS.dificultad = lo que estamos llamando es al setter
+/*
+------------------------------------------------------------
+CLASES
+------------------------------------------------------------
+*/
 
-//set dificultad(nuevaDificultad) {
-  //this.dificultad = nuevaDificultad;
-//}
+/*
+------------------------------------------------------------
 
+06 STATICOS
 
- //Si logeo esto en la consola , el tamaño call stack ha sido excedido, lo ue tendriamos es un bucle infinito 
+Las clases pueden tener atributos y metodos estaticos , pero que hacen referencia es que son dela propia clase, no son de ningun
+Objeto en cuestion sino que son de la propia clase
 
- //Accedemos a   console.log(cursoJS.dificultad);  y lo que hacemos al accederlo es sobrescribirlo con el getter
- //Entramos a this accedemos al propio objeto punto dificultad. Cuando accedemos a linea 37  y ejecutamos la 38 voivlemos a 
- //la 43
- // get dificultad() {
-//return this.dificultad;
-//}
+Atributos y metodos de la propia clase
 
-class Curso {
-   
-    constructor(titulo,dificultad) {
-      this.titulo = titulo;
-      this.dificultad = dificultad;
-      this.lecciones = []
-    }
+Ejemplo Molde Tarta
+Si tenemos un molde que hace tarta, podremos frabricar tartas de diferentes sabores , cada uno tendra sus atributos, sus metodos 
+Pero Hay metodos que vienen directamente peustos para el molde
+Ejemlo Limpiar molde seria un metodo no de las tartas sino de el molde
 
-    get dificultad() {
-      return this.dificultad;
-    }
+Ejempplo cursos
+Hay una serie de metodos que normalmente estan relacionados con estos cursos pero que no son de un curso en concreto sino que son para 
+cualquier curso.
 
-    set dificultad(nuevaDificultad) {
-      this.dificultad = nuevaDificultad;
-    }
-
-    agregarLeccion(leccion) {
-     this.lecciones.push(leccion)
-    }
-
-    eliminarUltimeLeccion(leccion) {
-        this.lecciones.pop(leccion)
-       }
-  }
-
-  const cursoJS = new  Curso ('javascript');
+Por ejemplo podriamos hacer un metodo para calcular una Url
+La url base para todos los cursos 
 
 
-  //Si logeo esto en la consola , el tamaño call stack ha sido excedido
-  console.log(cursoJS.dificultad); 
+La base url estatica no aparece en consola cuando hacemos console.log(cursoJS)
+------------------------------------------------------------
+*/
 
 
 
 
 
 
-
-
-
-
-  //Con getter y setters necesitamos usar _ sino tenemos el error call stack the arriba
-
-//_ esto es una convencion para indicar que la variable this._dificultad = dificultad; del constructor no se debe tratar 
-//Directamente, es una especie de indicativo de que esta variable es privada, aunque no existen las variables privadas en js
-//Pero es un indicativo 
-
-//Lo que hacemos es es utilizar este this  this._dificultad que esta en el constructor como una especie de variable interna de la clase
-//y exponer la propiedad dificultad   y exponerla desde fuera mendiante un getter y setter get dificultad() set dificultad
-
-
-
-//Si ejecuto esto tendria uno u lo que estamos es ejecuando el getter
-class Curso {
-   
+class Curso{
+     
   constructor(titulo,dificultad) {
-
     this.titulo = titulo;
-    this._dificultad = dificultad;
+    this.dificultad = dificultad;
     this.lecciones = []
   }
-  get dificultad() {
-    return this._dificultad;
-  }
-
-  set dificultad(nuevaDificultad) {
-    this._dificultad = nuevaDificultad;
-  }
+static BASE_URL = "desarrolloutil.com/cursos/";
 
   agregarLeccion(leccion) {
    this.lecciones.push(leccion)
   }
+
 
   eliminarUltimeLeccion(leccion) {
       this.lecciones.pop(leccion)
      }
 }
 
-const cursoJS = new  Curso ('javascript', 1);
+const cursoJS = new  Curso ('javascript',1);
 
-
-//Si logeo esto en la consola , el tamaño call stack ha sido excedido
-console.log(cursoJS.dificultad); 
-
+console.log(cursoJS); //La base url estatica no aparece en consola cuando hacemos console.log(cursoJS)
 
 
 
 
+//Esta url esta en la clase curso
 
-
-
-
-
-
-
-//Añadiendole console log getter y setter
-//Esto nos daria    GETTER   1
-class Curso {
-   
+class Curso{
+     
   constructor(titulo,dificultad) {
-
     this.titulo = titulo;
-    this._dificultad = dificultad;
+    this.dificultad = dificultad;
     this.lecciones = []
   }
-  get dificultad() {
-    console.log('GETTER');
-    return this._dificultad;
-  }
-
-  set dificultad(nuevaDificultad) {
-    console.log('SETTER');
-    this._dificultad = nuevaDificultad;
-  }
+static BASE_URL = "desarrolloutil.com/cursos/";
 
   agregarLeccion(leccion) {
    this.lecciones.push(leccion)
   }
+
 
   eliminarUltimeLeccion(leccion) {
       this.lecciones.pop(leccion)
      }
 }
 
-const cursoJS = new  Curso ('javascript', 1);
+const cursoJS = new  Curso ('javascript',1);
 
-
-
-console.log(cursoJS.dificultad); 
-
-
-
+console.log(Curso.BASE_URL); //la Url esta directamente en la clase curso , estamos haciendo referencia cuando digo curso a las 
+                            //clase curso , no al Objeto
 
 
 
 
 
+//Anadiendo metodo , pues puedo  tener propiedades y metodos
 
 
 
-
-
-
-
-
-
-// Añadiendo cursoJS.dificultad= 3;
-//Resultado ejecutamos primero el SETTER en la linea  cursoJS.dificultad= 3; y despues el GETTER 
-//Resultado SETTER GETTER 3
-class Curso {
-   
+class Curso{
+     
   constructor(titulo,dificultad) {
-
     this.titulo = titulo;
-    this._dificultad = dificultad;
+    this.dificultad = dificultad;
     this.lecciones = []
   }
-  get dificultad() {
-    console.log('GETTER');
-    return this._dificultad;
-  }
+static BASE_URL = "desarrolloutil.com/cursos/";
 
-  set dificultad(nuevaDificultad) {
-    console.log('SETTER');
-    this._dificultad = nuevaDificultad;
-  }
+static saludar(){
+  console.log("Saludo");
+}
 
   agregarLeccion(leccion) {
    this.lecciones.push(leccion)
   }
+
 
   eliminarUltimeLeccion(leccion) {
       this.lecciones.pop(leccion)
      }
 }
 
-const cursoJS = new  Curso ('javascript', 1);
+//const cursoJS = new  Curso ('javascript',1);
 
-//ejecutamos aqui el setter
-cursoJS.dificultad= 3;
-
-
-//ejecutamos aqui el setter
-console.log(cursoJS.dificultad); 
+CursoJS.saludar();
+console.log(Curso.BASE_URL); 
 
 
 
 
 
 
-
-
-
-//Estos setters sirven para lanzar errores 
-// añadiendo if  
-
-
-
-
-class Curso {
-   
-  constructor(titulo,dificultad) {
-
-    this.titulo = titulo;
-    this._dificultad = dificultad;
-    this.lecciones = []
-  }
-  get dificultad() {
-    console.log('GETTER');
-    return this._dificultad;
-  }
-
-  set dificultad(nuevaDificultad) {
-   if (nuevaDificultad >= 0 && nuevaDificultad <= 5){
-    this._dificultad = nuevaDificultad;
-   }
-    else {
-      console.log("no hago nada")
-    }
-  }
-
-  agregarLeccion(leccion) {
-   this.lecciones.push(leccion)
-  }
-
-  eliminarUltimeLeccion(leccion) {
-      this.lecciones.pop(leccion)
-     }
-}
-
-const cursoJS = new  Curso ('javascript', 1);
-
-
-cursoJS.dificultad= 3;
-cursoJS.dificultad= 7;
-
-console.log(cursoJS.dificultad); 
-
-
-
-
-
-
-
-
-
-//el echo de que lo hagamos como arriba no significa qu no podemos accder a 
-//cursoJS._dificultad = 7;
-//y cuando imprimimos dificultad va ser igual a 7
-//Resultado no hago nada  /  GETTER  / 7 
-
-
-class Curso {
-  constructor(titulo, dificultad) {
-    this.titulo = titulo;
-    this._dificultad = dificultad;
-    this.lecciones = [];
-  }
-  get dificultad() {
-    console.log("GETTER");
-    return this._dificultad;
-  }
-
-  set dificultad(nuevaDificultad) {
-    if (nuevaDificultad >= 0 && nuevaDificultad <= 5) {
-      this._dificultad = nuevaDificultad;
-    } else {
-      console.log("no hago nada");
-    }
-  }
-
-  agregarLeccion(leccion) {
-    this.lecciones.push(leccion);
-  }
-
-  eliminarUltimeLeccion(leccion) {
-    this.lecciones.pop(leccion);
-  }
-}
-
-const cursoJS = new Curso("javascript", 1);
-
-cursoJS.dificultad = 3;
-
-cursoJS.dificultad = 7;
-
-cursoJS._dificultad = 7;
-
-console.log(cursoJS.dificultad);
-
-
+//Ejemplo basico de Utilidad que tendria esto
 

@@ -17,7 +17,7 @@ class Curso{
 
 //2
   //Definiendo metodos
-  class cusrso{
+  class Curso{
     constructor(titulo,dificultad) {
       this.titulo = titulo;
       this.dificultad = dificultad;
@@ -100,7 +100,7 @@ class Curso{
    //5
   //Curiosidades de el constructor
   //En el constructor viene a ser lo que se ejecuta
-  // y aqui vemos que le ejecutamos el console log the constructor cuando invocamos al a funcion
+  // y aqui vemos que le ejecutamos el console log de constructor cuando invocamos a la funcion
   //Esto se ejecuta cada vez que invocamos a la funcion y es por esta razon que solo puede haber un constructor
   //Una clase solo puede tern un constructor
 
@@ -108,7 +108,7 @@ class Curso{
   class Curso{
    
     constructor(titulo,dificultad) {
-    console.log(constructor); 
+    console.log("constructor"); 
       this.titulo = titulo;
       this.dificultad = dificultad;
       this.lecciones = []
@@ -150,15 +150,19 @@ class Curso{
        }
   }
 
-  const cursoJS = new  Curso ('javascript');
+  const cursoJS = new  Curso ('javascript');// Dificultad undefined no le estamos pasando 1
 
-  cursoJS.dificultad = 1;
+  cursoJS.dificultad = 1;//Aqui seria lo mismo que pasar el parametro arriba pero en este caso accediendo a dificultad
   console.log(cursoJS); 
+
+
+
+
 
 
   //Cosas malas de javascript si you hago malas practicas
   //Asi modificamos los atributos y metodos y nada nos lo impide
-  //Esto no se puede hacer, deberiasmos ponernos unos limites
+  //Esto no se puede hacer, deberiamos ponernos unos limites
 
   class Curso{
      
