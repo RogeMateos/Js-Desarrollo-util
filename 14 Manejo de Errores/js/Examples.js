@@ -5,21 +5,25 @@
 
 console.log(``);
 
-//2
-//Lanzar excepciones trow
-//Utilizamos palabra clave Throw
-//podemos lanzar todo tipo de errores
+
+/*
+2
+LANZAR EXCEPCIONES THROW
+Utilizamos palabra clave Throw
+podemos lanzar todo tipo de errores
+*/
+
 
 throw "error";
 throw 5;
 throw function () {};
 
-//Cuanzo lanzamos este rror estamos rompiendo la ejecucion normal de nuestro codigo lo que hemos denominado
+//Cuanzo lanzamos este Error estamos rompiendo la ejecucion normal de nuestro codigo lo que hemos denominado
 //como flujo principal
 
 throw "error";
 
-//En el momento que lanzamos error rompemos el flujo, ja no vemos console log despues
+//En el momento que lanzamos error rompemos el flujo, ya no vemos console log despues
 
 console.log("Antes");
 
@@ -51,7 +55,7 @@ const comprobarSiEsdefectuosa = () => {
 const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
 
 /*
-Ejempli if else
+Ejemplo if else
 for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsDefectuosa();
 
@@ -89,7 +93,7 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
 //03
 //TRY CATCH
 
-// Con este codifo provocamos un Falso resultado
+// Con este codigo provocamos un Falso resultado
 // See ejemplo y veras  , lanza la pieza defectuosa y la pieza fabricada
 //Esto ha pasado porque no encerramos dentro de el try  todo lo que tenemos que encerrar en condiciones
 
@@ -136,8 +140,8 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
 //Numero de errores, numero de aciertos
 //Entonces en una cadena me interesa saber el nuemro de errores que tenemos y el numero de aciertos
 
-//en este caso en lugar de hacer un throw y decir pieza y defectuosa que es lo que recibi y cacturar exta excepcion
-//uy simplimente imprimirlo por consola  lo que hago es
+//en este caso en lugar de hacer un throw y decir pieza y defectuosa que es lo que recibi y capturar esta excepcion
+//y simplimente imprimirlo por consola  lo que hago es
 
 const NUM_PIEZAS = 10;
 const PROB_ERROR = 0.25;
@@ -251,7 +255,7 @@ console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
 
 //Throwing  error
-//Nos indica que en linea tenemso el error, para eso miramos ne la consola de el browser
+//Nos indica que en linea tenemos el error, para eso miramos ne la consola de el browser
 
 const NUM_PIEZAS = 10;
 const PROB_ERROR = 0.25;
@@ -360,6 +364,9 @@ console.log(`Fabricacas: ${NUM_PIEZAS}:`);
 console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
 
+
+
+
 //Example Haciendo un nuevo constructor
 const NUM_PIEZAS = 10;
 const PROB_ERROR = 0.25;
@@ -391,7 +398,11 @@ console.log(`Fabricacas: ${NUM_PIEZAS}:`);
 console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
 
-// Anadiendo dos errores
+
+
+
+
+// Anadiendo dos errores 1
 
 const NUM_PIEZAS = 10;
 const PROB_ERROR = 0.25;
@@ -399,10 +410,43 @@ const PROB_ERROR = 0.25;
 let correctas = 0;
 let defectuosas = 0;
 
+
+const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
 class ErrorPiezaDefectuosa extends Error {}
 
 class ErrorCadenaParada extends Error {}
+
+for (let i = 1; i <= NUM_PIEZAS; i++) {
+  const esDefectuosa = comprobarSiEsdefectuosa();
+  try {
+    if (i === 2) throw new ErrorPiezaDefectuosa("Se paro");
+    if (esDefectuosa) throw new ErrorCadenaParada("Pieza Defectuosa");
+
+    correctas++;
+  } catch (ex) {
+    console.log("console the ex", ex);
+    defectuosas++;
+  }
+}
+console.log(`Fabricadas: ${NUM_PIEZAS}:`);
+console.log(`-> Correctas ${correctas}:`);
+console.log(`Defectuosas: ${defectuosas}:`);
+
+
+
+// Anadiendo dos errores 2
+
+const NUM_PIEZAS = 10;
+const PROB_ERROR = 0.25;
+
+let correctas = 0;
+let defectuosas = 0;
+
+
 const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
+class ErrorPiezaDefectuosa extends Error {}
+
+class ErrorCadenaParada extends Error {}
 
 for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsdefectuosa();
