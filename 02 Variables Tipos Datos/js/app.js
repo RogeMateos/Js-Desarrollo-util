@@ -1,10 +1,17 @@
+const iva = 1.21;
 
-let resultado = "2" + 2;
+let precio1 =25;
 
-//resultado = resultado *2;
+precio1 = precio * iva;
 
-resultado *= 2;
+let precio2 =15;
 
+precio2 = precio2 = iva;
 
+let cantidad1 =2;
 
-console.log(resultado);  
+let cantidad2 =3;
+
+let total = precio1 * cantidad1 * precio2 * cantidad2;
+
+console.log(total);

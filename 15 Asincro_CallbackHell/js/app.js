@@ -1,25 +1,27 @@
+const simple = (tarea) => console.log(tarea);
 
-const error = (msg) => console.log(msg);
+const pesada = (tarea) => {
+  console.log(`Empezando tarea ${tarea} ...`);
 
-const tarea = (tarea, siguiente, error) => {
-  console.log(tarea);
-  if (Math.random() < 0.1) error();
-  setTimeout(siguiente, 500);
+  for (let i = 0; i < 2000000000; i++) {
+    Math.random() - Math.random() * Math.random();
+  }
+  console.log(`Tarea  ${tarea} terminada`);
 };
 
-const pensarIdea = () => tarea("PensarIdea", guionizar,() => error("Error al editar"));
+const tareaPablo = (tarea, callback, tiempo) => {
+  console.log(tarea);
+  setTimeout(callback, tiempo);
+};
 
-const guionizar = () => tarea("Guionizar", grabar,() => error("Error al editar"));
+const tareas = [
+  () => simple("Escribir Guion"),
 
-const grabar = () => tarea("Grabar", editar,() => error("Error al editar"));
+  () => tareaPablo("[PABLO] Hace Miniatura",() => pesada(" -> revisar la miniatura"),2000),
 
-const editar = () => tarea("Editar", publicar,() => error("Error al editar"));
+  () => pesada("grabar el video"),
 
-const publicar = () =>
-  tarea(
-    "publicar",
-    () => console.log("publicado"),
-    () => error("Error al publicar")
-  );
+  () =>tareaPablo("[PABLO]  Editar este video",() => simple(" -> Revisar video"),5000),
+];
 
-  pensarIdea ();
+for (const tarea of tareas) tarea();

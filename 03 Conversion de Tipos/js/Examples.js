@@ -55,7 +55,7 @@ let indefinido;
 console.log(cadena + numero);//55
 console.log(cadena + condicion);//5true
 console.log(cadena + nulo);//5null
-console.log(cadena + indefinido);//undefined
+console.log(cadena + indefinido);//5undefined
 
 //NUMERO
 
@@ -143,7 +143,7 @@ const cadena = 'hola';
 const cadena = '5';
 console.log(Number(cadena)); // NAN porque es hola, //5 si es 5 pero lo cmabiariaa morado como numero en consola
 
-console.log(Number(condicion));//  1 para true// Para false 
+console.log(Number(condicion));//  1 para true// 0 Para false 
 
 console.log(Number(nulo));// 0 siempre 
 

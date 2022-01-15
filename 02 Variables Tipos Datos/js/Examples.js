@@ -18,16 +18,56 @@
  Funciones
  Array es un tipo de Objeto
 /*
-
-
-02 DECLARAR CONSTANTES
 */
 
+
+
+
+//DECLARAR VARIABLES
+let miVariable = 5
+
+console.log(miVariable);//5
+
+miVariable = 6
+
+console.log(miVariable);//6
+
+//Multiplicacion
+
+let precio =25;
+
+let cantidad =2;
+
+let total = precio * cantidad;
+
+
+console.log(total);//50
+
+
+//Otro ejemplo
+
+
+let precio =25;
+precio = precio * 1.21;// 121 deberia de ser una const
+
+let cantidad =2;
+
+let total = precio * cantidad;
+
+
+console.log(total);//50
+
+
+
+
+
+//02 DECLARAR CONSTANTES
+// iva es siempre fijo 
 const iva = 1.21;
 
 let precio1 =25;
 
-precio1 = precio * iva;
+precio = precio * iva;
 
 let precio2 =15;
 
@@ -37,14 +77,14 @@ let cantidad1 =2;
 
 let cantidad2 =3;
 
-let total = precio1 * cantidad1 * precio2 * cantidad2;
+let total = precio * cantidad1 * precio2 * cantidad2;
 
-console.log(total);
+console.log(total);//114.99
 
 
 
 /*
-como Restriciones las constantes una vez declaradas su valor no peude variar
+como Restriciones las constantes una vez declaradas su valor no puede variar
 
 Utilizamos let cuando el valor vaya a ser modificado a posteriori const para todos los demas casos
 */
@@ -67,22 +107,19 @@ iva = 1.22;   //error
 //No pueden contener espacios o le ponemos una barra baja o camel case
 
 
-//No lET dara error
-const let = 1.21;
 
-let precio_1 =25;
+const let = 1.21; //No lET dara error, palabra reservada
 
-let precioUno =25;
+let precio_1 =25;//Correcto
+
+let precioProducto1=25; //Correcto
 
 //Nombres de variables
 //Pueden contener numeros, letras mayusculas y minusculas guiones bajos barras bajas
 //una variable no peude empezr por un numero
 
 
-// Nombres de constantes para multiplicar para dividir, en ese caso pondremos constantes en mayuscula
-
-
-const IVA = 1.21;
+const IVA = 1.21; //Mayuscula cunod es un valot como numero pi o el IVa ect
 
 //En caso camel case utilizamos barras bajas para separar
 
@@ -148,6 +185,9 @@ operadores de los strings solo el + para concatenar
 'hola';
 `hola`;
 'mi nombre "Roge';
+
+
+
 
 const edad =26;
 
@@ -218,7 +258,7 @@ numero + =  2;
 console.log(numero);//8
 
 
-numero - =  2;// lo mismo 
+numero - =  2;// lo mismo 4
 
 
 // ++ Sumar   -- Restar 
@@ -311,13 +351,13 @@ console.log(typeof [])//Object
 //OPERANDO ENTRE STRINGS Y NUMBERS
 
 
-let resultado = "2" + 2; //22
+let resultado = "4" + 2; //22
 
 //resultado = resultado *2;
 
-resultado *= 2;//44
+resultado *= 2;//84
 
 
 
-console.log(resultado);  //44 Esto es devido por la conversion de tipos implicita, es decir/cuando trabajamos
+console.log(resultado);  //84 Esto es devido por la conversion de tipos implicita, es decir/cuando trabajamos
 //con tipos de datos distintos lo que hace javascript es convertirlos a el mismo tipo de datos

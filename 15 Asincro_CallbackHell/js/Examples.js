@@ -1,5 +1,5 @@
 /*
-
+Ejemplo Pizza
 */
 
 console.log(``);
@@ -7,8 +7,8 @@ console.log(``);
 /*
 2 SET TIMEOUT
 
-Nos permite establece un delate para poder ejecutar una tarea 
-Esto seria un callback, una funcion que se para como parametro a otra funcion  () => console.log("Timeout")
+Nos permite establecer un delate para poder ejecutar una tarea 
+Esto seria un callback, una funcion que se pasa como parametro a otra funcion  () => console.log("Timeout")
 en este caso el setTimeout la ejecuta
 */
 
@@ -17,7 +17,7 @@ setTimeout(() => console.log("Timeout"), 3000);
 //Aqui a diferencia de otros lenguajes no vamosa bloquear la ejecucion de codigo mientras estamos
 //contando estos 3 mil milisegundos
 
-//Aqui veremos qeu desarrollo y util se ejecutan consecutivamente y despues viene el timeout
+//Aqui veremos que desarrollo y util se ejecutan consecutivamente y despues viene el timeout
 
 console.log("Desarrollo");
 
@@ -79,6 +79,7 @@ const simple = (tarea) => console.log(tarea);
 const pesada = (tarea) => {
   console.log(`Empezando tarea ${tarea} ...`);
 
+  //For para simular que se esta haciendo una tarea, le añando un ramdon asi tarda mas
   for (let i = 0; i < 1000000000; i++) {
     Math.random() - Math.random() * Math.random();
   }
@@ -99,8 +100,7 @@ const tareas = [
   () =>
     tareaPablo(
       "[PABLO] Hace Miniatura",
-      () => simple(" -> revisar la miniatura"),
-      2000
+      () => simple(" -> revisar la miniatura"),2000
     ),
   //Jose
   () => pesada("grabar el video"),
@@ -250,7 +250,7 @@ Pero que pasa si nos da un timeout la llamada de la api , si esta colapsada y ta
 Como no podemos garantizarnos el tiempo en el que se vana ejecutar tenemos ue garantizarnos si o si que las llamadas qeu sean dependientes una de otra ejecuten de forma consecutiva
 
 
-
+ 
 */
 
 const simple = (tarea) => console.log(tarea);

@@ -1,6 +1,6 @@
 # Js-Desarrollo-util
 
-Promesas
+Asincronismo
 
 
 Todo el codigo que hemos hescrito durante le curso es syncrono
@@ -10,9 +10,9 @@ En ciertas ocasiones javascript no depende de javascript solo, sino de mas cosas
 ejemplo llamada a una api, javacript no puede predecir si em va a responer con un error o con una respuesta
 Son cosas qeu respondn de agentes externos
 
-Ejemplo  Hambre
+Ejemplo  Pizzeria
 
-En casa todal a tarde programando entra hambre
+En casa toda la tarde programando entra hambre
 2 Opciones  
 Ir al supermercado , cocinarlo y comerlo
 Take away pizza, lo que tardan en traerme la pizza  y hacerla no depende de mi
