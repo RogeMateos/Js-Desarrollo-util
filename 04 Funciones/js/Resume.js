@@ -43,7 +43,7 @@ function saludar(nombre) {
   
   saludar(obtenerSaludo, alertSaludo);
   
-  //Arrow Finction
+  //Arrow Function
   
   const multiplicarPorDos = (numero) => {
     return numero * 2;

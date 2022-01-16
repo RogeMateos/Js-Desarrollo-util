@@ -88,12 +88,12 @@ El nombre de la funcion va a ser igual a el nombre de la Variable
 */
 
 
-
+//Funcion Nominal
 function saludar(nombre) {
     return (  `hola ${nombre}, bienvenido a desarrollo Util `)
 }
 
-//Transformando a funcion anonima
+//Transformando a funcion nominal a anonima
 
 const saludar2 =function(nombre) {
     console.log(  `hola ${nombre}, bienvenido a desarrollo Util `)
@@ -122,14 +122,39 @@ console.log(resultado);
 //Podemos pasar esas funciones como parametros a otras funciones 
 
 
+//1 step
+
+const obtenerSaludo = function (nombre) {
+  return  ` hola ${nombre}, bienvenido a desarrollo util`; //Este codigo en este paso aun no se ejecuta
+  };
+  
+  
+  
+  const saludar = function (mensaje) {
+     console.log(mensaje);
+  };
+  
+  
+  const resultado = saludar ("pablo");
+  console.log(resultado); //Pablo
+
+
+
+
+
+
+//2 Step
+
+
+
 const obtenerSaludo = function (nombre) {
 return  ` hola ${nombre}, bienvenido a desarrollo util`;
 };
 
 
 
-const obtenerSaludo = function (mensaje) {
-   console.log(memsaje);
+const imprimir = function (mensaje) {
+   console.log(mensaje);
 };
 
 const saludar = function(obtener,imprimir) {
@@ -137,13 +162,13 @@ const saludar = function(obtener,imprimir) {
    imprimir(saludo);
 };
 
-const resultado = saludar (obtenerSludo,imprimirSaludo);
+const resultado = saludar (obtenerSaludo,imprimirSaludo);
 console.log(resultado);
 
 
 
 
-//Esta funcion me vale tanto como para imprimir el saludo por consola como ela lert
+//Esta funcion me vale tanto como para imprimir el saludo por consola como el alert
 const obtenerSaludo = function (nombre) {
     return ` hola ${nombre}, bienvenido a Desarrollo util`;
   };
