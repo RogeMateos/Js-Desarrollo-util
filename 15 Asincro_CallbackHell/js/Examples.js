@@ -19,11 +19,13 @@ setTimeout(() => console.log("Timeout"), 3000);
 
 //Aqui veremos que desarrollo y util se ejecutan consecutivamente y despues viene el timeout
 
-console.log("Desarrollo");
+console.log("Desarrollo");//se ejecuta primero
 
-setTimeout(() => console.log("Timeout"), 3000);
+setTimeout(() => console.log("Timeout"), 3000);//Se ejecuta tercero
 
-console.log("Util");
+console.log("Util");//se ejecuta segundo
+
+
 
 //Siempre tenemos una parte de tiempo que no podemos determinar exactamente
 
@@ -38,7 +40,7 @@ Metafora de el oficinista
 Oficina y estamos haciendo tareas en nuestro dia a dia
 Jose tiene una serie de tareas y para alguna de ellas me necesita a mi 
 necesita que resuelva algunas tareas 
-Algunas tareas seran simples  las podra resolver jose en un perido de tiempo muy pequeño
+Algunas tareas seran simples  las podra resolver jose en un periodo de tiempo muy pequeño
 
 Dentro de jose video me interesa exponer un codigo sincrono que ses simplemente ejecutado en javascript pero
 que tambien tarde bastante tiempo , para eso fuerzo un for 
@@ -79,17 +81,20 @@ const simple = (tarea) => console.log(tarea);
 const pesada = (tarea) => {
   console.log(`Empezando tarea ${tarea} ...`);
 
-  //For para simular que se esta haciendo una tarea, le añando un ramdon asi tarda mas
+  //For para simular que se esta haciendo una tarea
   for (let i = 0; i < 1000000000; i++) {
-    Math.random() - Math.random() * Math.random();
+    Math.random() - Math.random() * Math.random();//le añando un ramdon asi tarda mas
   }
   console.log(`Tarea  ${tarea} terminada`);
 };
 
-//Creo function para pablo
-const tareaPablo = (tarea, callback, tiempo) => {
+//Creo function para pablo, con callback 
+//Con el callback establezco un settimeout 
+//Lo que vamos a hacer es un time out   en el que recibiremos este callback   setTimeout(callback
+//y ejecutaremos este tarea, callback, tiempo)  despues de que haya transcurrido este tiempo
+const tareaPablo = (tarea, callback, tiempo) => { 
   console.log(tarea);
-  setTimeout(callback, tiempo);
+  setTimeout(callback, tiempo); //Settimeout para este callback que va a tardar un tiempo determinado
 };
 
 //Tareas you tube
@@ -100,8 +105,8 @@ const tareas = [
   () =>
     tareaPablo(
       "[PABLO] Hace Miniatura",
-      () => simple(" -> revisar la miniatura"),2000
-    ),
+      () => simple(" -> revisar la miniatura"),2000),
+
   //Jose
   () => pesada("grabar el video"),
   //Tarea Pablo Editar video              /Jose Revisa  tarea video
@@ -115,24 +120,23 @@ const tareas = [
 
 for (const tarea of tareas) tarea();
 
-//Codigo Limpio sin comentarios
 
+//Codigo Limpio sin comentarios mismo que el de arriba
 /*
  Recordar la manera de ejecutarse
  hasta que la tarea pesada no se realiza los callbacks no se ejecutan
  simple(" -> revisar la miniatura"),2000),
 
- Dese que jose graba video hasta que se acaba, pablo ya ha terminado su miniatura , se la ha mandado a jose
+ Desde que jose graba video hasta que se acaba, pablo ya ha terminado su miniatura , se la ha mandado a jose
  y jose ya la puede revisar, es decir el callback   simple(" -> revisar la miniatura"),2000), ya esta listo para ejecutarse 
 
  Pero no se ejecuta
  Porque?
  Cuando javascript tiene tareas sincronas a realizar primero realiza todas las tareas sincronas que tenga disponibles
  y despues cuando ya no tiene nada que hacer es cuando mira los callbacks que tiene en la lista 
-
-
-
 */
+
+
 
 const simple = (tarea) => console.log(tarea);
 
@@ -172,7 +176,18 @@ const tareas = [
 
 for (const tarea of tareas) tarea();
 
-// Cambiando tarea pesada a Pablo miniatura
+//1 Escribir guion
+//2 PABLO hace miniatura
+//3 Empezando tarea Grabar video
+//4 Tarea graban video terminada
+// 5 PABLO Editar video
+// 6 ---> Revisar la miniatura
+// 7 ---> Revisar video
+
+
+
+//PESADA
+// Cambiando tarea PESADA  Pablo miniatura
 
 const simple = (tarea) => console.log(tarea);
 
@@ -194,31 +209,40 @@ const tareas = [
   () => simple("Escribir Guion"),
   //Callback ahora pesada
   () =>
-    tareaPablo(
-      "[PABLO] Hace Miniatura",
-      () => pesada(" -> revisar la miniatura"),
-      2000
-    ),
+    tareaPablo("[PABLO] Hace Miniatura",() => pesada(" -> revisar la miniatura"), 2000),//Callback revisar miniatura  ahora pesada
 
   () => pesada("grabar el video"),
 
   () =>
-    tareaPablo(
-      " [PABLO]  Editar video",
-      () => simple(" -> Revisar video"),
-      5000
-    ),
+    tareaPablo(" [PABLO]  Editar video",() => simple(" -> Revisar video"),5000),
 ];
 
 for (const tarea of tareas) tarea();
 
+//1 Escribir guion
+//2 PABLO hace miniatura         ---------- callback esperando pesada
+//3 Empezando tarea Grabar video    pesada
+
+//4 Tarea graban video terminada  Pesada
+// 5 PABLO Editar video        ---------callback Simple
+//aqui hace los callbacks
+
+
+//callback pesado 
+// 6  Empezando tarea -> Revisar la miniatura   
+
+//aqui se para hasta que termina lo que hace el for no empieza la siguiente linea 7 ni 8 revisar video
+// 7  Tarea -> revisar la miniatura terminada 
+// 8  Revisar video
+
+
+
+
 /*
 4 ORDEN DE LLAMADAS
 
-Problema principal con asyncronismo es que no podemos determinar exactamente el instante temporal en elque se vana ejecutar ciertas 
+Problema principal con asyncronismo es que no podemos determinar exactamente el instante temporal en el que se van a ejecutar ciertas 
 llamadas
-
-
 
 EJemplo
 
@@ -247,12 +271,12 @@ decides pintar unas tarjetas
 Todo esto funciona bien en el 90 por ciento porque despues de cinco segundos esa llamada a la api ya ha terminado
 
 Pero que pasa si nos da un timeout la llamada de la api , si esta colapsada y tarda 7 segundos en responder
-Como no podemos garantizarnos el tiempo en el que se vana ejecutar tenemos ue garantizarnos si o si que las llamadas qeu sean dependientes una de otra ejecuten de forma consecutiva
+Como no podemos garantizarnos el tiempo en el que se vana ejecutar 
 
+IMPORTANTE
+tenemos  que garantizarnos si o si que las llamadas qeu sean dependientes una de otra ejecuten de forma consecutiva
 
- 
 */
-
 const simple = (tarea) => console.log(tarea);
 
 const pesada = (tarea) => {
@@ -273,23 +297,22 @@ const tareas = [
   () => simple("Escribir Guion"),
 
   () =>
-    tareaPablo(
-      "[PABLO] Hace Miniatura",
-      () => simple(" -> revisar la miniatura"),
-      10000
-    ),
+    tareaPablo("[PABLO] Hace Miniatura",() => simple(" -> revisar la miniatura"),10000),
 
   () => pesada("grabar el video"),
 
   () =>
-    tareaPablo(
-      " [PABLO]  Editar video",
-      () => simple(" -> Publicar video"),
-      10
-    ),
+    tareaPablo("[PABLO]  Editar video",()  => simple(" -> Publicar video"), 10),
 ];
 
 for (const tarea of tareas) tarea();
+//1 Escribir guion
+//2 PABLO hace miniatura        
+//3 Empezando tarea Grabar video  
+//4 Tarea graban video terminada  
+//5 PABLO Editar video        -
+//6 Publicar video  porque tiene ahora 10 
+//7 Revisar miniatura porque tiene ahora 1000
 
 /*
 05
@@ -297,25 +320,27 @@ CALLBACK HELL
 
 El problema de el callback hell lo resuelven las promesas
 
-Ejemplo hacinedo las distintas fases de edicion de el video
+Ejemplo haciendo las distintas fases de edicion de el video
 hacer el guion
 Grabar
 Editar
 publicar
 
-En estas tareas pude ser que de un error , en cada uno de estos momentos
-habla que definir un error especifico para cada una de las tareas
-
-*/
-
-const error = (msg) => console.log(msg);
-
-const tarea = (tarea, siguiente, error) => {
-  console.log(tarea);
+En estas tareas puede ser que de un error , en cada uno de estos momentos
+habra que definir un error especifico para cada una de las tareas
   if (Math.random() < 0.1) error();
-  setTimeout(siguiente, 500);
+*/
+const error = (msg) => console.log(msg);//funcion error
+
+const tarea = (tarea, siguiente, error) => { //Recibo nombre de tarea , tarea siguiente sera un callback
+                                            //Error
+  console.log(tarea);
+  if (Math.random() < 0.1) error(); //Lo logico aqui seria un throw pro simplifico con una funcion error
+  setTimeout(siguiente, 500);//Garantizar que cada una de las tareas reciba la tarea siguiente, pero la tarea siguiente esta compuesta por la mia mas la siguiente
 };
 
+//empezamos desde atras , la tarea de publicar el video  seria ejecutar la funcion tarea con publicar.
+//Con la funcion siguiente que seria  () => console.log("publicado"), y la funcion de error 
 const publicar = () =>
   tarea(
     "publicar",
@@ -325,8 +350,7 @@ const publicar = () =>
 
   publicar ();
 
-//Añadiendo mas funciones
-
+//Añadiendo otra funcion editar
 const error = (msg) => console.log(msg);
 
 const tarea = (tarea, siguiente, error) => {
@@ -334,7 +358,6 @@ const tarea = (tarea, siguiente, error) => {
   if (Math.random() < 0.1) error();
   setTimeout(siguiente, 500);
 };
-
 
 const editar = () => tarea("Editar", publicar,() => error("Error al editar"));
 
@@ -347,10 +370,7 @@ const publicar = () =>
 
   editar ();
 
-
-  // Añadiendo aun mas 
-
-
+//Añadiendo  Las demas funciones
 const error = (msg) => console.log(msg);
 
 const tarea = (tarea, siguiente, error) => {
@@ -365,7 +385,7 @@ const guionizar = () => tarea("Guionizar", grabar,() => error("Error al Guioniza
 
 const grabar = () => tarea("Grabar", editar,() => error("Error al grabar"));
 
-const editar = () => tarea("Editar", publicar,() => error("Error al editar"));
+const editar = () => tarea("Editar", publicar,() => error("Error al editar"));// editar, funcion siguiente lo que quiero hacer es publicar
 
 const publicar = () =>
   tarea(
@@ -373,24 +393,25 @@ const publicar = () =>
     () => console.log("publicado"),
     () => error("Error al publicar")
   );
-
   pensarIdea ();
 
+ /*
+ Ahora no lo estoy almacenando en funciones  sino que sustituyo guionizar y lo siguiente
+ Como ves este codigo es muy dificil de leer para un humano
 
+Esta funcion tan sencilla es solo pensar idea 
+ Callback hell
+ Todo este anidamiento se conoce como callback hell, esto funciona pero no de cara a un humano
 
-
- //Ahora no lo estoy almacenando en funciones  sino que sustituyo guionizar y lo siguiente
- //COmo ves este codigo es muy dificil de leer para un humano
- //Callback hell
-
-
+ para evitar esto tenemos Asyn await
+*/
 
 const error = (msg) => console.log(msg);
 
 const tarea = (tarea, siguiente, error) => {
   console.log(tarea);
   if (Math.random() < 0.1) error();
-  setTimeout(siguiente, 500);
+  else setTimeout(siguiente, 500);
 };
 
 const pensarIdea = () => 

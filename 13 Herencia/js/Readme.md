@@ -20,8 +20,7 @@ Todos pueden hacer login correo contraseña
 
 Puedo tener un clase base de la que herede de todos a la que 
 extienda todas las demas 
-Tener una clase base y simplemente en cada una de ellas escribir 
-la funcionalidad especifica
+Tener una clase base y simplemente en cada una de ellas escribir la funcionalidad especifica
 En el alumno lo propio de el alumno
 En el Profesor lo propio de el profesor
 Y en usuario lo comun de todos

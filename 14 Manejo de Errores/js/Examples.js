@@ -70,10 +70,13 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
 for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsdefectuosa();
 
-  if (esDefectuosa) throw `pieza de ${i} defectuosa`;
+  if (esDefectuosa) throw `pieza de ${i} defectuosa`; //Cuando lanzamos el throw se para lo siguiente, es como hacer uns especia de return
 
   console.log(`pieza ${i} fabricada`);
 }
+
+
+
 
 //EJEMPLO  //Lanzar excepciones trow no comments
 
@@ -92,8 +95,8 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
 
 //03
 //TRY CATCH
-
-// Con este codigo provocamos un Falso resultado
+//Hacemos try catch para controlar la excepcion obsea el throw
+// Con este codigo provocamos un Falso resultado, se repite la pieza defectuosa y la fabricada
 // See ejemplo y veras  , lanza la pieza defectuosa y la pieza fabricada
 //Esto ha pasado porque no encerramos dentro de el try  todo lo que tenemos que encerrar en condiciones
 
@@ -106,7 +109,7 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsdefectuosa();
   try {
     if (esDefectuosa) throw ` -> pieza de ${i} defectuosa`;
-  } catch (ex) {
+  } catch (ex) {              //Se le puede llamar error ex como se quiera
     console.log("Console ex", ex);
   }
 
@@ -129,11 +132,11 @@ const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
 for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsdefectuosa();
   try {
-    if (esDefectuosa) throw ` -> pieza de ${i} defectuosa`;
+    if (esDefectuosa) throw ` -> pieza de ${i} defectuosa`;  //Si es defectuosa lanzo un error
 
-    console.log(`pieza ${i} fabricada`);
+    console.log(`pieza ${i} fabricada`); //Sino imprimo este console.log
   } catch (ex) {
-    console.log("Console ex", ex);
+    console.log("Console ex", ex); //es ex es todo esto  if (esDefectuosa) throw ` -> pieza de ${i} defectuosa`; 
   }
 }
 
@@ -185,7 +188,7 @@ Si vemos el Flujo , llegamos al try vemos que ha habido alguna defectuosa no sab
 , renemos que ir fabricando piezas 1 2 3 4 5 6 y supongamos ue la 7 da error , pues en las primeras 
 ha ejecuado todo el bloque try  como no ha dado error simplemente ha ejecutado el finally 
 cuando ha llegado al a que is ha dado error  nos hemos encontrado con este error  if (esDefectuosa) throw ` -> pieza de ${i} defectuosa`;
-entocnes ha ejecutado el catch  defectuosas++ pero luego ha ejecutado el finally igualmente
+entonces ha ejecutado el catch  defectuosas++ pero luego ha ejecutado el finally igualmente
 
 
 El finally suele ser para cosas hago una llamada a base de datos funciona bien
@@ -222,16 +225,16 @@ console.log(`Defectuosas: ${defectuosas}:`);
 5
 LA CLASE ERROR
 
-El throw que estamos lanzando es un stream
+El throw que estamos lanzando es un string
 Y es lo que recivimos en el catch ex
 Es un string, lo mismo que lanzamos es lo que recibimos
-Y esto es lo correcto? Debemos lanzarun string o numero, por supuesto que no
+Y esto es lo correcto? Debemos lanzar un string o numero, por supuesto que no
 
 Javascript tiene una clase especifica para lanzar errores  error
 
 */
 
-const NUM_PIEZAS = 10;
+const NUM_PIEZAS = 5;
 const PROB_ERROR = 0.25;
 
 let correctas = 0;
@@ -245,8 +248,8 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
 
     correctas++;
   } catch (ex) {
-    console.log("console the ex", ex);
-    console.log(typeof ex);
+    console.log("console the ex", ex);    //pieza 2 es defectuosa` recibimos este string
+    console.log(typeof ex); //String, esto no seria lo correcto lanzar un string
     defectuosas++;
   }
 }
@@ -254,8 +257,12 @@ console.log(`Fabricacas: ${NUM_PIEZAS}:`);
 console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
 
+
+
+
 //Throwing  error
-//Nos indica que en linea tenemos el error, para eso miramos ne la consola de el browser
+//Javascript tiene una clase especifica para lanzar errores ERROR
+//Nos indica que en linea tenemos el error, para eso miramos en la consola de el browser
 
 const NUM_PIEZAS = 10;
 const PROB_ERROR = 0.25;
@@ -268,18 +275,25 @@ const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
 for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsdefectuosa();
   try {
-    if (esDefectuosa) throw new Error("Pieza defectuosa");
+    if (esDefectuosa) throw new Error("Pieza defectuosa");//Lanzamos Error con ERROR
 
     correctas++;
   } catch (ex) {
-    console.log("console the ex", ex);
-    console.log(typeof ex);
+    console.log("console the ex", ex); //Error pieza defectuosa
+    console.log(ex);
+    //console.log(ex.message) //Nos indica el mensaje, pieza defectuosa
+    //console.log(ex.name) //Nos indica el nombre de la clase que hemos lanzado ,Error
+    //console.log(ex.stack) // Indica donde te ha dato esa excepcion
+    console.log(typeof ex); //Error:Pieza defectuosa
     defectuosas++;
   }
 }
 console.log(`Fabricacas: ${NUM_PIEZAS}:`);
 console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
+
+
+
 
 //Example con function lanzar error
 
@@ -299,11 +313,12 @@ function lanzarloDeverdad() {
 }
 
 function lanzarError() {
-  lanzarloDeverdad();
+  lanzarloDeverdad();  
 }
 
 for (let i = 1; i <= NUM_PIEZAS; i++) {
-  const esDefectuosa = comprobarSiEsdefectuosa();
+  const esDefectuosa = comprobarSiEsdefectuosa();// Lanzar error que se ha dado en lanzarlo de verdad que 
+  //ha sido llamado por lanzar ese error, que ha sido llamado por el index
   try {
     if (esDefectuosa) lanzarError();
 
@@ -318,13 +333,17 @@ console.log(`Fabricacas: ${NUM_PIEZAS}:`);
 console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
 
+
+
+
+
 /*
 5
 EXCEPCIONES CUSTOM
 Hasta aqui hemos hablado solo cuando tenemos la pieza defectuosa pero que pasa si tenemos mas de una excepcion
 dentro de nuestro codigo.
 
-Que pasa si tenemos mas de una excepcion dentro den eustro codigo mas de una posibildiad de fallo
+Que pasa si tenemos mas de una excepcion dentro den nuestro codigo mas de una posibildiad de fallo
 Pieza defectuosa o bien maquina se puede parar
 En este caso tenemos que distinguir una expcepcion de otra 
 
@@ -344,7 +363,7 @@ const PROB_ERROR = 0.25;
 let correctas = 0;
 let defectuosas = 0;
 
-class ErrorPiezaDefectuosa extends Error {}
+class ErrorPiezaDefectuosa extends Error {} //Con esto ya tengo un error personalizado
 
 const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
 
@@ -367,7 +386,7 @@ console.log(`Defectuosas: ${defectuosas}:`);
 
 
 
-//Example Haciendo un nuevo constructor
+//Example Haciendo un nuevo CONSTRUCTOR,esto seria utilizando herencia
 const NUM_PIEZAS = 10;
 const PROB_ERROR = 0.25;
 
@@ -376,7 +395,7 @@ let defectuosas = 0;
 
 class ErrorPiezaDefectuosa extends Error {
   constructor(num) {
-    super(`Pieza ${num} defectuosa`);
+    super(`Pieza ${num} defectuosa`);       //Utilizando constructor
   }
 }
 
@@ -385,7 +404,7 @@ const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
 for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsdefectuosa();
   try {
-    if (esDefectuosa) throw new ErrorPiezaDefectuosa("5");
+    if (esDefectuosa) throw new ErrorPiezaDefectuosa("5"); //pasandole valor
 
     correctas++;
   } catch (ex) {
@@ -414,12 +433,13 @@ let defectuosas = 0;
 const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
 class ErrorPiezaDefectuosa extends Error {}
 
-class ErrorCadenaParada extends Error {}
+class ErrorCadenaParada extends Error {} //Creamos otro error cadena parada
 
 for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsdefectuosa();
   try {
-    if (i === 2) throw new ErrorPiezaDefectuosa("Se paro");
+    if (i === 2) throw new ErrorPiezaDefectuosa("Se paro"); //Cuando lleguemos a la iteracion 2  tenemos error
+    //cadena parada
     if (esDefectuosa) throw new ErrorCadenaParada("Pieza Defectuosa");
 
     correctas++;
@@ -434,7 +454,7 @@ console.log(`Defectuosas: ${defectuosas}:`);
 
 
 
-// Anadiendo dos errores 2
+// Anadiendo dos errores 2 ,  console.log(typeof ex);
 
 const NUM_PIEZAS = 10;
 const PROB_ERROR = 0.25;
@@ -465,7 +485,10 @@ console.log(`Fabricacas: ${NUM_PIEZAS}:`);
 console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
 
-// Para hacer esto en condiciones, utilizamos insance of
+
+
+//INSTANCE OF
+// Para hacer esto en condiciones, utilizamos instance of
 //Podemos utilizar este instance of para saber  de que tipo es la excepcion
 
 const NUM_PIEZAS = 10;
@@ -488,7 +511,7 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
 
     correctas++;
   } catch (ex) {
-    console.log("console the ex", ex);
+    //console.log("console the ex", ex);
     if (ex instanceof ErrorCadenaParada) console.log("Se ha parado la cadena");
     else if (ex instanceof ErrorPiezaDefectuosa)
       console.log(`La pieza  ${i} es defectuosa`);
@@ -499,10 +522,12 @@ console.log(`Fabricacas: ${NUM_PIEZAS}:`);
 console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
 
-// 6 ANIDANDO CATCH Y RELANZANDO ERRORES
-//En el anterior codigo tenemos un problema, tendriamso que detener por completo la fabricacion, cuando se para la cadena
 
-//Para logra esto tenemos que relanzar la excepcion hacia arriba, podemos decir me ha llegado esta excepcion hago un console log de que se ha parado la cadena
+
+// 6 ANIDANDO CATCH Y RELANZANDO ERRORES
+//En el anterior codigo tenemos un problema, tendriaMOS que detener por completo la fabricacion, cuando se para la cadena
+
+//Para lograR esto tenemos que relanzar la excepcion hacia arriba, podemos decir me ha llegado esta excepcion hago un console log de que se ha parado la cadena
 
 //pero relanzo la excepcion.
 //La lanzo hacia arriba, cuando la lanzo hacia arriba desde un catch este catch ya no funciona el catch no se peude cacturar asi mismo
@@ -532,9 +557,12 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
     console.log("console the ex", ex);
 
     if (ex instanceof ErrorCadenaParada) {
-      console.log("Se ha parado la cadena");
-      //Lanzamos excepcion hacia arriba asi se para
-      throw ex;
+      console.log("Se ha parado la cadena"); 
+      
+      throw ex; //se ha parado la cadena ,reLanzamos excepcion hacia arriba asi se para,aqui 
+      //Cuando lo lanzo hacia arriba este catch ya no funciona
+      //Es decir volvemos a lanzar la excepcion que nos ha llegado
+      //Y aqui paramos por completo toda la ejecucion
     } else if (ex instanceof ErrorPiezaDefectuosa)
       console.log(`La pieza  ${i} es defectuosa`);
     defectuosas++;
@@ -543,6 +571,10 @@ for (let i = 1; i <= NUM_PIEZAS; i++) {
 console.log(`Fabricacas: ${NUM_PIEZAS}:`);
 console.log(`-> Correctas ${correctas}:`);
 console.log(`Defectuosas: ${defectuosas}:`);
+
+
+
+
 
 //Añadiendo un try arriba de todo . que envolviese a todo el try y un catch de ex
 
@@ -560,7 +592,7 @@ const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
 for (let i = 1; i <= NUM_PIEZAS; i++) {
   const esDefectuosa = comprobarSiEsdefectuosa();
   //Adding try envolving the other try
-  try {
+  try { 
     try {
       if (i === 2) throw new ErrorPiezaDefectuosa("Cadena parada");
       if (esDefectuosa) throw new ErrorCadenaParada("Pieza Defectuosa");

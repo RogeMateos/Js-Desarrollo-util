@@ -1,3 +1,4 @@
+
 const simple = (tarea) => console.log(tarea);
 
 const pesada = (tarea) => {
@@ -17,11 +18,13 @@ const tareaPablo = (tarea, callback, tiempo) => {
 const tareas = [
   () => simple("Escribir Guion"),
 
-  () => tareaPablo("[PABLO] Hace Miniatura",() => pesada(" -> revisar la miniatura"),2000),
+  () =>
+    tareaPablo("[PABLO] Hace Miniatura",() => simple(" -> revisar la miniatura"),10000),
 
   () => pesada("grabar el video"),
 
-  () =>tareaPablo("[PABLO]  Editar este video",() => simple(" -> Revisar video"),5000),
+  () =>
+    tareaPablo("[PABLO]  Editar video",()  => simple(" -> Publicar video"), 10),
 ];
 
 for (const tarea of tareas) tarea();

@@ -146,24 +146,25 @@ const obtenerSaludo = function (nombre) {
 //2 Step
 
 
-
 const obtenerSaludo = function (nombre) {
-return  ` hola ${nombre}, bienvenido a desarrollo util`;
-};
+  return  ` hola ${nombre}, bienvenido a desarrollo util`;
+  };
+
+  
+  const imprimirSaludo = function (mensaje) {
+     console.log(mensaje);
+  };
+  
 
 
+  const saludar = function(obtener,imprimir) {
+     const saludo = obtener("Pablo") 
+     console.log(saludo);
+     imprimir(saludo);
+  };
+ 
+saludar (obtenerSaludo,imprimirSaludo);
 
-const imprimir = function (mensaje) {
-   console.log(mensaje);
-};
-
-const saludar = function(obtener,imprimir) {
-   const saludo = obtener("Pablo") 
-   imprimir(saludo);
-};
-
-const resultado = saludar (obtenerSaludo,imprimirSaludo);
-console.log(resultado);
 
 
 
@@ -220,8 +221,31 @@ const sumar = function (a,b) {
   const multiplicacion = multiplicarPorDos (suma);
   console.log(multiplicacion);
  
+
+
+
+  //Arrow example 1 step
+  //Asi ya funcionaria
+
+
+  const sumar =  (a,b) =>{
+    return a + b
+  }
   
-  //Convirtiendo  ARROW
+  const multiplicarPorDos =  (numero)=> {
+    return numero * 2
+  }
+  
+  const suma = sumar(2,3);
+  const multiplicacion = multiplicarPorDos (suma);
+  console.log(multiplicacion);
+ 
+
+
+  
+
+
+  //Simplificando Arrow  Multiplicando por dos
   
   const multiplicarPorDos =  (numero) =>{
     return numero * 2

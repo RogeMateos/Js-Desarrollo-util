@@ -18,14 +18,14 @@ CLASES
 
 06 STATICOS
 
-Las clases pueden tener atributos y metodos estaticos , pero que hacen referencia es que son dela propia clase, no son de ningun
+Las clases pueden tener atributos y metodos estaticos , pero que hacen referencia es que son de la propia clase, no son de ningun
 Objeto en cuestion sino que son de la propia clase
 
 Atributos y metodos de la propia clase
 
 Ejemplo Molde Tarta
 Si tenemos un molde que hace tarta, podremos frabricar tartas de diferentes sabores , cada uno tendra sus atributos, sus metodos 
-Pero Hay metodos que vienen directamente peustos para el molde
+Pero Hay metodos que vienen directamente puestos para el molde
 Ejemlo Limpiar molde seria un metodo no de las tartas sino de el molde
 
 Ejempplo cursos

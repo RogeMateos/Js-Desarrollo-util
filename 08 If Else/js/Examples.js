@@ -60,7 +60,8 @@ console.log("cero");
 
 THRUTHY FALSY
 
-FALSY
+1FALSY
+
 O
 ""
 false
@@ -68,7 +69,7 @@ null
 undefined
 
 
-TRUTHY
+2TRUTHY
 
 function() {}
 
@@ -91,3 +92,6 @@ else console.log("Falsy")
 //Si es cero cero es falsy dentro de los numeros
 
 const valor = [].length;//false because it is 0 o legnth
+
+if (valor) console.log("Truthy");
+else console.log("Falsy")

@@ -1,21 +1,38 @@
 /*
 Example 1
+
+
 */
+/*
+pasos para reducir la funcion
+const comprobarSiEsdefectuosa = () =>{
+  if (Math.ramdom() < PROB_ERROR ) return true;
+  else return false
+}
+
+const comprobarSiEsdefectuosa = () => {
+  return  Math.ramdom() < PROB_ERROR ;
+}
+
+*/
+
 
 const NUM_PIEZAS = 10;
 const PROB_ERROR = 0.25;
 
-const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR;
+const comprobarSiEsdefectuosa = () => Math.random() < PROB_ERROR; 
 
 
 for (let i = 1; i <= NUM_PIEZAS; i++) {
+  //Esto devolvera si Math ramdon es menor que PROB_ERROR si es menor que 0.25 tendremos un error
   const esDefectuosa = comprobarSiEsdefectuosa();
   console.log(esDefectuosa);
 
-  if (esDefectuosa) throw `pieza de ${i} defectuosa`;
+  if (esDefectuosa) throw `pieza de ${i} defectuosa`;//Si es menor que 025 / True
 
-  console.log(`pieza ${i} fabricada`);
+  console.log(`pieza ${i} fabricada`); //Aqui seria false
 }
+
 
 
 

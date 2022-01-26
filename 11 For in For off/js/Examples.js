@@ -46,7 +46,7 @@ for (let i = 0; i < cursosJS.length; i++) {
   console.log(` ${i}. ${cursosJS[i]}`);
 }
 
-//dandole la vuelta al bucle
+//dandole la vuelta al bucle 
 
 const cursosJS = [
   "intro a js",
@@ -55,6 +55,9 @@ const cursosJS = [
   "Funciones",
 ];
 
+//lo que nos interesa es que i > = 0 ,mientras siga siendo mayor , queire decir que tenemos elementos que recorrer
+//Es te let la posicion inicial, tiene que ser la ultima de el Array
+//Si partimos de la ultima posicion tendremos que decrementar i--
 for (let i = cursosJS.length - 1; i >= 0; i--) {
   console.log(` ${i}. ${cursosJS[i]}`);
 }
@@ -69,6 +72,8 @@ Es una mejora de el lenguaje de javascipt
 Este for tiene que hacerse Obligatoriamente sobre Objetos iterables
 Objeto iterable es algo qeu se parece a un array 
 
+Desventajas
+No tenemos acceso al indice, si necesitas el indice no necesitas un for of
 ------------------------------------------------------------
 */
 
@@ -111,11 +116,12 @@ const cursosJS = [
 ];
 
 for (const leccion of cursosJS) {
-  console.log(leccion);
+  console.log(leccion);// intro a js  variables y tipos  Conversion de tipos  Funciones
 }
+ 
 
 //Desventajas
-//No tenemos acceso al indice, si necesitaas el indice no necesitas un for of
+//No tenemos acceso al indice, si necesitas el indice no necesitas un for of
 //
 
 /*
@@ -123,7 +129,8 @@ for (const leccion of cursosJS) {
 04
 BUCLE FOR IN 
 El bucle for in sirve para recorrer las claves de un objeto
-Nunca debemos utilizarlo para array
+Cuando queremos iterar sobre las claves de un Objeto
+Nunca debemos utilizarlo para arrays
 
 La implementacion de for in en chrome y en firefox te devuelve 
 los resultados en orden 
@@ -209,9 +216,10 @@ const cursosJS = [
 ];
 cursosJS.profesor = "Roge";
 
+
 for (const i in cursosJS) {
   console.log(typeof i);
-  console.log(` ${i + 1}. ${cursosJS[i]}`); //01,11,21,31,profesor1Roge
+  console.log(` ${i + 1}. ${cursosJS[i]}`); //01 intro a js,11 variables y tipos,21 Conversion de tipos,31 Funciones,profesor1Roge
 }
 
 
@@ -222,8 +230,9 @@ const cursosJS = [
   "variables y tipos",
   "Conversion de tipos",
   "Funciones",
-];
-cursosJS.profesor = "Roge";
+//Array con cuatro posiciones , pero  roge tiene como clase profesor:"Roge"
+//A un array se le pueden añadir propiedades , porque un array no existe como tal
+//es una forma que tenemos en javascript de representar un objeto especial
 console.log(cursosJS); // Todo el array mas profesor Roge
 for (const i in cursosJS) {
   console.log(typeof i);

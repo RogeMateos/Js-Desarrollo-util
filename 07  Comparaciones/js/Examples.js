@@ -55,9 +55,9 @@ const b = true;
 
 console.log(a == b);//True
 
-console.log[] == 0;//True
+console.log[] == 0;//True un array vacio es igual a cero, porque se produce conversion
 
-console.log [] != 0;//False
+console.log [] != 0;//False distinto es negar lo que te de el ==
 
 
 
@@ -71,21 +71,16 @@ IGUALDAD  STRICT
 ------------------------------------------------------------
 */
 
-
 const a = "1";
 const b = true;
 
 console.log(a === b);//False
 
 
-
-
-
 /*
 ------------------------------------------------------------
 03
 MAYOR Y MENOR
-
 ------------------------------------------------------------
 */
 
@@ -108,7 +103,7 @@ const b = 2;
  const a = "1;"
  const b = "12";
 
- console.log( a <= b);//False cuando comparamos strings lo que estmaos es ordenandolos 
+ console.log( a <= b);//False cuando comparamos strings lo que estamos es ordenandolos 
  //alfabeticamente
 
 
@@ -129,7 +124,6 @@ const b = 2;
 ------------------------------------------------------------
 04
 COMPARACIONES COMPUESTAS
-
 ------------------------------------------------------------
 */
 
@@ -143,7 +137,6 @@ console.log(b < c);//True
 
 
 //Condicion conjunta
-
 
 const a = 1;
 const b = 2;
@@ -159,4 +152,4 @@ const b = 2;
 const c = 2;
 
 console.log(a < b);//False
-console.log(!a < b);//True
+console.log(!(a < b);//True a menor que b es false pero como lo hemos negado es true

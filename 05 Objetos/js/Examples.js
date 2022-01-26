@@ -1,6 +1,6 @@
 
 /*
-
+dd
 */
 
 
@@ -15,7 +15,16 @@
 */
 
 
-//OBJETOS
+
+/*
+OBJETOS
+Cuando queremos agrupar datos en un contenedor para poder tratarlos como uno solo
+
+Ejemplo
+Datos personales de una persona, nos interesa que esos datos esten relacionadoscomigo
+Para agrupar valores dentro de un mismo contenedor existen los objetos
+*/
+
 
 /*
 ------------------------------------------------------------
@@ -24,6 +33,7 @@ CREANDO OBJETOS
 ------------------------------------------------------------
 */
 
+//Practicamente siempre se declaran con const
 const persona = {
     nombre:'Pablo',
     apellidos:'castellanos',
@@ -61,7 +71,7 @@ console,log(persona.nombre)//Pablo
 persona.nombre ='Paolo'
 
 //Las constantes no se pueden reasignar , utilizar el operador =. Lo que reasigne una de de las propiedades
-console,log(persona.nombre)//Paolo
+console.log(persona.nombre)//Paolo
 
 
 
@@ -114,8 +124,9 @@ console.log(factura);
 /*
 4
 METODOS Y THIS
-Cuando estamos trabajando con objetos y necesitamaos usar THIS, Hhacer referenciaa los datos de el propio 
-Objeto es obligatorio usar Function.  
+Cuando estamos trabajando con objetos y necesitamaos usar THIS, Hacer referencia a los datos de el propio 
+Objeto es obligatorio usar Function no la arrow sino la de el ejemplo de abajo
+
 calcularTotal: function  () {
        console.log("THIS",this)
   }
@@ -126,7 +137,8 @@ calcularTotal: function  () {
 
 
 /*
-Aqui tenemos un problema responsabilidades de quien es la responsabilidad de calcular el precio total del item1 el item1
+Aqui tenemos un problema responsabilidades de quien es la responsabilidad de calcular el precio total del item1. 
+Quien tiene todos los datos de el titem 1?el item1 
 Con lo cual seria logico item uno calculara su precio total
 */
 
@@ -170,13 +182,15 @@ const IVA_GENERAL = 1.21;
 
 const IVA_REDUCIDO = 1.10;
 
+//Para calcular el total de el item Uno,necesitamos el precio, la cantidad y los impuestos
 const item1 = {
     precio:15,
     cantidad:2,
     impuestos:IVA_GENERAL,
 
-    //Este this apunta a windows porque es una funcion Arrow
+    //Este this apunta a windows porque es una funcion Arrow, no apunta a item1
     calcularTotal: () => {
+        //this.precio
        console.log("THIS",this)
   }
 }
@@ -363,7 +377,7 @@ console.log(factura.calcularTotal());
 
 
 
-//Com,pletando ejercicio pasando argumento a cont facture metodo
+//Completando ejercicio pasando argumento a cont factura metodo
 const IVA_GENERAL = 1.21;
 
 const IVA_REDUCIDO = 1.10;
@@ -391,7 +405,7 @@ const item2 = {
 const factura = {
     item1,
     item2,
-    calcularTotal: function () {
+    calcularTotal: function (descuento) {
         return (this.item1.calcularTotal() + this.item2.calcularTotal()) * descuento;
      
     }

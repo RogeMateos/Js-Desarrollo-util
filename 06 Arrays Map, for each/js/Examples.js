@@ -20,7 +20,7 @@ CREAR Y ACCEDER ARRAYS
 Cuando introducimos un elemento en un Array, lo que hacemos es introducirlo en un indice
 Accedemos al as posiciones de el Array
 Accedemos mediante indice
-Se recomienda que sean valores  el mismo tipo los que se almacenan, para poder realizar las mismas operaciones
+Se recomienda que sean valores de el mismo tipo los que se almacenan, para poder realizar las mismas operaciones
 
 ------------------------------------------------------------
 */
@@ -36,14 +36,14 @@ const miArray = [
   [1, 2, 3],
 ];
 
-console.log(miArray);
-console.log(miArray[0]);
+console.log(miArray);//imprime el array con su index
+console.log(miArray[0]);// hola
 
 //Reasignando array
 
 miArray[4] = "Pablo";
 
-console.log(miArray);
+console.log(miArray);// Imprime el array y añade pablo en posicion 4 substituyendo undefined por Pablo
 
 /*
 ------------------------------------------------------------
@@ -55,7 +55,7 @@ console.log(miArray);
 03
 PROPIEDAD LENGTH
 Los arrays no dejan de ser Objetos
-Al ser un objeto tienes sus propieas proiedades , atributos y metodos 
+Al ser un objeto tienes sus propias propiedades , atributos y metodos 
 Y es lo que se utiliza para manipular un arrray
 Propiedad length
 ------------------------------------------------------------
@@ -71,7 +71,7 @@ const miArray = [
   () => "hola",
   [1, 2, 3],
 ];
-console.log(typeof miArray);
+console.log(typeof miArray);//Object
 console.log(miArray.length); //8 Devuelve numero elemetnos hemos introducido al array
 
 /*
@@ -83,7 +83,7 @@ console.log(miArray.length); //8 Devuelve numero elemetnos hemos introducido al 
 ------------------------------------------------------------
 04
 METODOS
-PUSH, POP ,SHIFT , UNSHIFTH
+PUSH,UNSHIFTH, POP ,SHIFT 
 ------------------------------------------------------------
 */
 
@@ -125,7 +125,7 @@ Añadir en diferentes posiciones un elemento a mayores que no sean las anteriori
 
 Splice nos pedira tres argumentos
 Start indice donde empezamos insercion
-Delete count Cuantos lementos a partirde la posicion queremos eliminar
+Delete count Cuantos elementos a partir de la posicion queremos eliminar
 Array de los elementos que queramos insertar a continuacion
 ------------------------------------------------------------
 */
@@ -160,28 +160,43 @@ Realizar una operacion sobre cada uo de los elementos de el Array
 ------------------------------------------------------------
 */
 
-//Imprimir un consol.log por cada elemento de el Array ,forEach() aqui lo que recibiremos es una function
-//que sera un callback , que tendra tres parametros
-//
+
 
 const miArray = ["1", "2", "3", "4", "5", "6"];
 
 //const foreachFunction = (elemento,indice,array) =>{}
 
+//Imprimir un consol.log por cada elemento de el Array ,forEach() aqui lo que recibiremos es una function
+//que sera un callback , que tendra tres parametros
+//const foreachFunction = (elemento,indice,array) =>{}
 miArray.forEach((elem, index, array) => {
   console.log(elem, index);
-});
+}); 
 
 //Imprimiendo con tres parametros
 //El array como tercer parametro se utilizaria Si nosotros queremos crear un array nuevo que
 //depende de los valores , ejemplo quiero sumar a cada elemento
 //el del a izquierda , lo que hago es utilizar este array dentro de le for each para calcular
 //el nuevo valor
+
 const miArray = ["uno", "2", "3", "4"];
 
 miArray.forEach((elem, index, array) => {
-  console.log(elem, index, array);
+  console.log(elem, index);//uno 0  2 1  3 2 4 3 
+
+
+  
+
+//Con los tres parametros
+const miArray = ["uno", "2", "3", "4"];
+
+miArray.forEach((elem, index, array) => { 
+  console.log(elem, index, array);// uno 0[el array]  2 1 [el array]  3 2[el array]  4 3 [el array] 
 });
+
+
+
+
 
 //Ejemplo imprimiendo elmento mas dos
 
@@ -192,22 +207,20 @@ miArray.forEach((elem,index,array)=> {
  console.log(elem +2 ,index);
 })
 */
-miArray.forEach((elem, index, array) => {
-  console.log(Number(elem) + 2, index);
+miArray.forEach((elem, index) => {
+  console.log(Number(elem) + 2, index); // number para convertirlo a number pues son strings
 });
+
+
+
 
 //Ejemplo multiplicando elemento por index
 
-const miArray = ["uno", "2", "3", "4"];
+const miArray = ["1", "2", "3", "4"];
 
-/*
-miArray.forEach((elem,index,array)=> {
- console.log(elem +2 ,index);
-})
-*/
 
-miArray.forEach((elem, index, array) => {
-  console.log(elem * index);
+miArray.forEach((elem, index) => {
+  console.log(elem * index); // en este caso no hay convertirlo a numero porque es multiplicaciony me la convierte directamente
 });
 
 /*
@@ -219,11 +232,11 @@ miArray.forEach((elem, index, array) => {
 ------------------------------------------------------------
 07 
 MAP
-Mapea el array realiza una operacion sobre todos los elementos dun array y devolver un nuevo 
+Mapea el array realiza una operacion sobre todos los elementos de un array y devolver un nuevo 
 array que contenga el resultado
 Map  recive un callback igual que el de foreach  elem,index,array
 
-La diferencia clave entre map y foreach es uqe foreach realiza una accion pero no decuelve absolutamente nada
+La diferencia clave entre map y foreach es que foreach realiza una accion pero no devuelve absolutamente nada
 map nos realiza una transformacion para cada uno de los elementos de el array y nos devuelve el elemento modificado
 dentro de un nuevo array 
 El array en maps siempre va a tener el mismo numero de elementos que lo que tenia el array original
@@ -245,7 +258,7 @@ let miArray = [1, 2, 3, 4, 5];
 
 miArray = miArray.map((i) => i + 3);
 
-console.log(miArray);
+console.log(miArray);// [4 5 6 7 8]
 
 /*
 ------------------------------------------------------------
@@ -286,7 +299,7 @@ const facturas = [
 const IVA = 1.21;
 const totalFactura = facturas.map((i) => i.precio * i.cantidad * IVA);
 
-console.log(totalFactura);
+console.log(totalFactura);// [ 27.83, 45.98, 67.75999999999999, 26.619999999999997 ]
 
 //Ahora utilizando foreach
 const facturas = [
@@ -309,9 +322,9 @@ const facturas = [
 ];
 
 const IVA = 1.21;
-const totalFactura = faturas.map((i) => i.precio * i.cantidad * IVA);
+const totalFactura = facturas.map((i) => i.precio * i.cantidad * IVA); //[ 27.83, 45.98, 67.75999999999999, 26.619999999999997 ]
 
-totalFactura.forEach((i, index) => console.log("Elemento", index, i));
+totalFactura.forEach((i, index) => console.log("Elemento", index, i));//Elemento 0 27.83  Elemento 1 45.98  Elemento 2 67.75999999999999  Elemento 3 26.619999999999997
 
 //Sumando todo con
 /*
@@ -338,13 +351,15 @@ const facturas = [
   },
 ];
 
+//Esto se puede hacer con un contador como lo hacemos ahora, pero hay metodos como
+//Reduce para hacerlo
 const IVA = 1.21;
 const totalFactura = facturas.map((i) => i.precio * i.cantidad * IVA);
 
 let total = 0;
 totalFactura.forEach((i) => (total += i));
 
-console.log(total);
+console.log(total);// 168.19
 
 /*
  METODO REDUCE
@@ -383,11 +398,15 @@ const facturas = [
 const IVA = 1.21;
 const totalFactura = facturas.map((i) => i.precio * i.cantidad * IVA);
 
-const total = totalFactura.reduce((a, b) => a + b);
+const total = totalFactura.reduce((a, b) => a + b);// lo que queremos es transformar total factura en un numero
 
 console.log(total);
 
-// Haciendo console.log de a y de b
+
+
+
+
+// Haciendo console.log de a y de b , para demostrar como funciona reduce sumando a b
 
 const facturas = [
   {
@@ -493,7 +512,8 @@ const facturas = [
     cantidad: 1,
   },
 ];
-
+// const total = facturas.map((i) => i.precio * i.cantidad).filter((elemt,index,array) => i > 30);
+//nos quedamos solo con el elemento y habitualmente cuando tenemos solo el elemento lo llamamos i
 const total = facturas.map((i) => i.precio * i.cantidad).filter((i) => i > 30);
 
-console.log(total);
+console.log(total); //38.56

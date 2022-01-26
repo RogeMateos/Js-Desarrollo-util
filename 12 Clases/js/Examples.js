@@ -1,6 +1,6 @@
 
 //1
-//Definiendo clases/Con structor
+//Definiendo clases/Constructor
 //Buena practica todos los atributos se inicialicen en el constructor
 
 class Curso{
@@ -10,9 +10,6 @@ class Curso{
       this.lecciones = []
     }
   }
-
-
-
 
 
 //2
@@ -30,9 +27,6 @@ class Curso{
         this.lecciones.pop(leccion)
        }
   }
-
-
-
 
    //3
    //Creando Objeto curso
@@ -57,10 +51,6 @@ class Curso{
   const cursoCSS = new  Curso ('css',4)
 
   console.log(cursoJS,cursoCSS); 
-
-
-
-
 
 
 
@@ -102,28 +92,10 @@ class Curso{
   //En el constructor viene a ser lo que se ejecuta
   // y aqui vemos que le ejecutamos el console log de constructor cuando invocamos a la funcion
   //Esto se ejecuta cada vez que invocamos a la funcion y es por esta razon que solo puede haber un constructor
-  //Una clase solo puede tern un constructor
+  //Una clase solo puede tener un constructor
 
 
-  class Curso{
-   
-    constructor(titulo,dificultad) {
-    console.log("constructor"); 
-      this.titulo = titulo;
-      this.dificultad = dificultad;
-      this.lecciones = []
-    }
-    agregarLeccion(leccion) {
-     this.lecciones.push(leccion)
-    }
-    eliminarUltimaLeccion(leccion) {
-        this.lecciones.pop(leccion)
-       }
-  }
-
-  const cursoJS = new  Curso ('javascript',1);
-
-  const cursoCSS = new  Curso ('css',4);
+ 
 
 
 
@@ -192,3 +164,9 @@ class Curso{
     cursoJS.eliminarUltimeLeccion ();
   
     console.log(cursoJS); 
+
+
+    
+
+
+    //En 

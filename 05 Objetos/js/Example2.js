@@ -52,7 +52,7 @@ const item2 = {
 const item3 = item2;
 item3.precio = 23;
 
-console.log(item3);
+console.log(item3);//tendra precio 23
 
 
 //Haciendo comprobaciones de item2
@@ -111,13 +111,14 @@ tenemos una referencia aqui, otra aqui  y las dos apuntan al mismo Objeto
 06 
 OBJETO WINDOW
 
-Metodo log y pasa parametros hola
-Poqrque existe un Objeto console?
+Accede Metodo log y pasa parametros hola console.log('Hola');
+Porque existe un Objeto console?
 El objeto padre es window , ese objeto lo crea el navegador directamente 
-si tecleamos en console windown vemos qeu tiene un montonazo de metodos 
+si tecleamos en console windown vemos que tiene un montonazo de metodos 
 
 Cuando accedemos a console realmente lo que estamos haciendo es window.console.log(1)
 */
 
-console.log('Hola');
-window.console.log(1)
+console.log('Hola'); //Accede Metodo log y pasa parametros hola
+Window
+window.console.log("1");
