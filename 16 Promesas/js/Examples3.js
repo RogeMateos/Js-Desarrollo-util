@@ -12,7 +12,6 @@ PROMESAS
 ------------------------------------------------------------
 */
 
-
 /*
 ------------------------------------------------------------
 4
@@ -29,60 +28,51 @@ modificamos funcion multiplicar
 El catch no es solo para el request sino que vale para cualquiera de los  then
 
 ------------------------------------------------------------
-*/const toNumber = (n) => Number(n);
+*/ 
+const toNumber = (n) => Number(n);
 const multiply = (n) => {
-  console.log("Multiply",n);
-  if (n > 10) throw new Error ("Error");
-  return n *2;
-}; 
-const print = (n) => console.log(n); 
-
-
+  console.log("Multiply", n);
+  if (n > 10) throw new Error("Error");
+  return n * 2;
+};
+const print = (n) => console.log(n);
 
 const thenAlt = (n) => console.log(n);
 
 const catchAndPrint = (err) => console.log(err);
 
-
 const request = (url) => {
-    return new Promise ((resolve,reject) => {
-        const req = new XMLHttpRequest()
-        req.open('GET', url) ;
+  return new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open("GET", url);
 
-        req.onload = () => {
-            if(req.status === 200) {
-              //Al then le llega este valor 
-              resolve(req.responseText);
-            }
-            else{
-              //2
-              reject(new Error("error al cargar"));
-              
-            }
-          
-          }
-          
-          req.onerror = () => {
-              //3
-            reject(new Error("error de la red"));
-           
-          };
-          
-          req.send();
+    req.onload = () => {
+      if (req.status === 200) {
+        //Al then le llega este valor
+        resolve(req.responseText);
+      } else {
+        //2
+        reject(new Error("error al cargar"));
+      }
+    };
 
-    } )  
+    req.onerror = () => {
+      //3
+      reject(new Error("error de la red"));
+    };
+
+    req.send();
+  });
 };
-request ("./js/numero.txt")
-.then(toNumber)
-.then(multiply)
-.then(multiply)
-.then(multiply)//20  aqui se para la cadena de then ,cuando encontramos error saltamos al catch
-.then(multiply)
-.then(print)
-.then(print)
-.catch(catchAndPrint);// Saltamos aqui al catch
-
-
+request("./js/numero.txt")
+  .then(toNumber)
+  .then(multiply)
+  .then(multiply)
+  .then(multiply) //20  aqui se para la cadena de then ,cuando encontramos error saltamos al catch
+  .then(multiply)
+  .then(print)
+  .then(print)
+  .catch(catchAndPrint); // Saltamos aqui al catch
 
 /*
 ------------------------------------------------------------
@@ -95,66 +85,60 @@ el siquiente then se ejecute con ese valor
 
 
 ------------------------------------------------------------
-*/const toNumber = (n) => Number(n);
+*/ const toNumber = (n) => Number(n);
 const multiply = (n) => {
-  console.log("Multiply",n);
-  if (n > 10) throw new Error ("Error");
-  return n *2;
-}; 
-const print = (n) => console.log(n); 
-
-
+  console.log("Multiply", n); //Multiply 5,multiply 10, multiply 20
+  if (n > 10) throw new Error("Error");
+  return n * 2;
+};
+const print = (n) => console.log(n);
 
 const thenAlt = (n) => console.log(n);
 
 const catchAndPrint = (err) => console.log(err);
 
-
 const request = (url) => {
-    return new Promise ((resolve,reject) => {
-        const req = new XMLHttpRequest()
-        req.open('GET', url) ;
+  return new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open("GET", url);
 
-        req.onload = () => {
-            if(req.status === 200) {
-              //Al then le llega este valor 
-              resolve(req.responseText);
-            }
-            else{
-              //2
-              reject(new Error("error al cargar"));
-              
-            }
-          
-          }
-          
-          req.onerror = () => {
-              //3
-            reject(new Error("error de la red"));
-           
-          };
-          
-          req.send();
+    req.onload = () => {
+      if (req.status === 200) {
+        //Al then le llega este valor
+        resolve(req.responseText);
+      } else {
+        //2
+        reject(new Error("error al cargar"));
+      }
+    };
 
-    } )  
+    req.onerror = () => {
+      //3
+      reject(new Error("error de la red"));
+    };
+
+    req.send();
+  });
 };
-request ("./js/numero.txt")
-.then(toNumber)
-.then(multiply)
-.then(multiply)
-.then(multiply)
-.then(multiply)
-.then(print)
-.then(print)
-.catch(catchAndPrint)//Este catch llega se ejecuta pero no funciona como los .then
-.catch(catchAndPrint);
-
-
+request("./js/numero.txt")
+  .then(toNumber)
+  .then(multiply)//5
+  .then(multiply)//10
+  .then(multiply)//20 
+  .then(multiply)
+  .then(print)
+  .then(print)
+  .catch(catchAndPrint) //Aqui lanzamos un error Este catch llega se ejecuta pero no funciona como los .then, no pasa de aqui
+  .catch(catchAndPrint);
 
 /*
 ------------------------------------------------------------
 4.2
 PROMISE Catch
+
+
+Con dos catch  lo que podemos hacer es  con ese capturar y devolver un valor 
+
 Poniendo catch debajo de el error multiply
 
 sigue haciendo multiply de undefine porque este .catch(catchAndPrint) //error no ha devuelto nada
@@ -162,63 +146,52 @@ Este catch captura el error hace un comportamiento y permite que sigan el resto 
 
 
 ------------------------------------------------------------
-*/const toNumber = (n) => Number(n);
+*/ const toNumber = (n) => Number(n);
 const multiply = (n) => {
-  console.log("Multiply",n);
-  if (n > 10) throw new Error ("Error");
-  return n *2;
-}; 
-const print = (n) => console.log(n); 
-
-
+  console.log("Multiply", n);
+  if (n > 10) throw new Error("Error");
+  return n * 2;
+};
+const print = (n) => console.log(n);
 
 const thenAlt = (n) => console.log(n);
 
 const catchAndPrint = (err) => console.log(err);
 
-
 const request = (url) => {
-    return new Promise ((resolve,reject) => {
-        const req = new XMLHttpRequest()
-        req.open('GET', url) ;
+  return new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open("GET", url);
 
-        req.onload = () => {
-            if(req.status === 200) {
-              //Al then le llega este valor 
-              resolve(req.responseText);
-            }
-            else{
-              //2
-              reject(new Error("error al cargar"));
-              
-            }
-          
-          }
-          
-          req.onerror = () => {
-              //3
-            reject(new Error("error de la red"));
-           
-          };
-          
-          req.send();
+    req.onload = () => {
+      if (req.status === 200) {
+        //Al then le llega este valor
+        resolve(req.responseText);
+      } else {
+        //2
+        reject(new Error("error al cargar"));
+      }
+    };
 
-    } )  
+    req.onerror = () => {
+      //3
+      reject(new Error("error de la red"));
+    };
+
+    req.send();
+  });
 };
-request ("./js/numero.txt")
-.then(toNumber)
-.then(multiply)//5
-.then(multiply)//10
-.then(multiply)//20
-.catch(catchAndPrint) //error
-.then(multiply) //undefined
-.then(multiply)//nan
-.then(print)
-.catch(catchAndPrint);
-
-
-
-
+request("./js/numero.txt")
+  .then(toNumber)
+  .then(multiply) //5
+  .then(multiply) //10
+  .then(multiply) //20 En este ha dado error 
+  //este catch no ha devuelto nada/Este catch captura el valor y permite que siga el resto de then,
+  .catch(catchAndPrint) //error capturar y devolver un valor 
+  .then(multiply) //undefined //y que entonces el siguiente then se ejecute con ese valor 
+  .then(multiply) //nan
+  .then(print)
+  .catch(catchAndPrint);
 
 /*
 ------------------------------------------------------------
@@ -243,131 +216,101 @@ hay que tener mucho cuidado y vigilar el flujo del a ejecucion de estos then y e
 ------------------------------------------------------------
 */
 
-
 const toNumber = (n) => Number(n);
 const multiply = (n) => {
-  console.log("Multiply",n);
-  if (n > 10) throw new Error ("Error");
-  return n *2;
-}; 
-const print = (n) => console.log(n); 
-
-
+  console.log("Multiply", n);
+  if (n > 10) throw new Error("Error");
+  return n * 2;
+};
+const print = (n) => console.log(n);
 
 const thenAlt = (n) => console.log(n);
 
-
 //añadiendo return 1 a error
-const catchAndPrint = (err) => {
+const catchAndPrint = (err) => { //No solo devolvemos error sino que devolvemos un uno
   console.log(err);
   return 1;
-
-}
-const request = (url) => {
-    return new Promise ((resolve,reject) => {
-        const req = new XMLHttpRequest()
-        req.open('GET', url) ;
-
-        req.onload = () => {
-            if(req.status === 200) {
-              resolve(req.responseText);
-            }
-            else{
-              //2
-              reject(new Error("error al cargar"));
-              
-            }
-          
-          }
-          
-          req.onerror = () => {
-              //3
-            reject(new Error("error de la red"));
-           
-          };
-          
-          req.send();
-
-    } )  
 };
-request ("./js/numero.txt")
-.then(toNumber)
-.then(multiply)//5
-.then(multiply)//10
-.then(multiply)//20
-.catch(catchAndPrint) //error
-.then(multiply) //1 pilla el 1 de el ccatch and print con el return 1
-.then(multiply)//2
-.then(print)//4
-.catch(catchAndPrint);
+const request = (url) => {
+  return new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open("GET", url);
 
+    req.onload = () => {
+      if (req.status === 200) {
+        resolve(req.responseText);
+      } else {
+        //2
+        reject(new Error("error al cargar"));
+      }
+    };
 
+    req.onerror = () => {
+      //3
+      reject(new Error("error de la red"));
+    };
 
+    req.send();
+  });
+};
+request("./js/numero.txt")
+  .then(toNumber)
+  .then(multiply) //5
+  .then(multiply) //10
+  .then(multiply) //20
+  .catch(catchAndPrint) //error , pero tiene un uno de el catch and print return 1
+  .then(multiply) //1 pilla el 1 de el catch and print con el return 1
+  .then(multiply) //2
+  .then(print) //4
+  .catch(catchAndPrint);
 
 /*
 ------------------------------------------------------------
 5 
 FINALLY
-
-
-
 ------------------------------------------------------------
 */
 
-
 const toNumber = (n) => Number(n);
 const multiply = (n) => {
-  console.log("Multiply",n);
-  if (n > 10) throw new Error ("Error");
-  return n *2;
-}; 
-const print = (n) => console.log(n); 
-
-
+  console.log("Multiply", n);
+  if (n > 10) throw new Error("Error");
+  return n * 2;
+};
+const print = (n) => console.log(n);
 
 const thenAlt = (n) => console.log(n);
-
-
 
 const catchAndPrint = (err) => {
   console.log(err);
   return 1;
-
-}
-const request = (url) => {
-    return new Promise ((resolve,reject) => {
-        const req = new XMLHttpRequest()
-        req.open('GET', url) ;
-
-        req.onload = () => {
-            if(req.status === 200) {
-              resolve(req.responseText);
-            }
-            else{
-              //2
-              reject(new Error("error al cargar"));
-              
-            }
-          
-          }
-          
-          req.onerror = () => {
-              //3
-            reject(new Error("error de la red"));
-           
-          };
-          
-          req.send();
-
-    } )  
 };
-request ("./js/numero.txt") //5
-//request ("./js/numero.txt2") Error al cargar
-.then(print)
-.catch(catchAndPrint);
+const request = (url) => {
+  return new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open("GET", url);
 
+    req.onload = () => {
+      if (req.status === 200) {
+        resolve(req.responseText);
+      } else {
+        //2
+        reject(new Error("error al cargar"));
+      }
+    };
 
+    req.onerror = () => {
+      //3
+      reject(new Error("error de la red"));
+    };
 
+    req.send();
+  });
+};
+request("./js/numero.txt") //5
+  //request ("./js/numero.txt2") Error al cargar
+  .then(print)
+  .catch(catchAndPrint);
 
 /*
 ------------------------------------------------------------
@@ -383,67 +326,50 @@ y suele ser un metodo que sea al final, por ejemplo
 2 Lo encuentras? En el then me devuelves un usuario
 3 No lo encuentras ?En el catch me devuelves un not found 
 4 Pero al final siempre vas a tener que cerrar la conexion con la base de datos
-Tanto si lo encuentras como sino la conexion tiene que quedar cerrada
+Tanto si lo encuentras como sino la conexion tiene que quedar cerrada  so finally
 
 
 ------------------------------------------------------------
 */
 
-
 const toNumber = (n) => Number(n);
 const multiply = (n) => {
-  console.log("Multiply",n);
-  if (n > 10) throw new Error ("Error");
-  return n *2;
-}; 
-const print = (n) => console.log(n); 
-
-
+  console.log("Multiply", n);
+  if (n > 10) throw new Error("Error");
+  return n * 2;
+};
+const print = (n) => console.log(n);
 
 const thenAlt = (n) => console.log(n);
-
-
 
 const catchAndPrint = (err) => {
   console.log(err);
   return 1;
-
-}
-const request = (url) => {
-    return new Promise ((resolve,reject) => {
-        const req = new XMLHttpRequest()
-        req.open('GET', url) ;
-
-        req.onload = () => {
-            if(req.status === 200) {
-              resolve(req.responseText);
-            }
-            else{
-              //2
-              reject(new Error("error al cargar"));
-              
-            }
-          
-          }
-          
-          req.onerror = () => {
-              //3
-            reject(new Error("error de la red"));
-           
-          };
-          
-          req.send();
-
-    } )  
 };
-request ("./js/numero.txt") //5
-//request ("./js/numero.txt2") Error al cargar
- .then(print)
- .catch(catchAndPrint)
- .finally(() => console.log("Se acabo la conexion"));
+const request = (url) => {
+  return new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open("GET", url);
 
+    req.onload = () => {
+      if (req.status === 200) {
+        resolve(req.responseText);
+      } else {
+        //2
+        reject(new Error("error al cargar"));
+      }
+    };
 
+    req.onerror = () => {
+      //3
+      reject(new Error("error de la red"));
+    };
 
-
-
-
+    req.send();
+  });
+};
+request("./js/numero.txt") //5
+  //request ("./js/numero.txt2") Error al cargar
+  .then(print)
+  .catch(catchAndPrint)
+  .finally(() => console.log("Se acabo la Peticion"));

@@ -1,42 +1,16 @@
-/*
-
-*/
-
-/*
-    ||    console.log(``);    ` `    ||
-*/
-
-/*
-------------------------------------------------------------
-PROMESAS
-------------------------------------------------------------
-*/
-
-/*
-------------------------------------------------------------
-02
-LA BASE DE UNA REQUEST
-
-Haciendo una solicitud con el javascript original, javascript boomer
-
-Necesitamos algun tipo de solicitud asincrona que nos demuestre como funcionan las promesas
-Aprovechamos el liver server que tenemos abierto en el puerto 5500
-Este servidor nos permite hacer peticiones en base a recursos 
-
-Creamos un archivo txt y almacenamos un numero
-Lo que vamos a hacer es una peticion a este servidor en busca de este recurso numero.txt para ver su valor
-y poder hacer operaciones con el 
-Esto lo haremos a traves de el protocolo http una solicitud  tradicional 
-Existen otras alternativas a dia de hoy como fetch pero vamos a ir a la base de todo
-Como se hacia cuando fetch y promesas no existia
-------------------------------------------------------------
-*/
-
 
 
 /*
-02  Example 1
+EXAMPLE CALLBACKS
+Simmple
+creando funcion
+creando callbacks thenfn i catchfn
 */
+
+/*
+EXAMPLE 1
+*/
+
 const req = new XMLHttpRequest();
 req.open("GET", "./js/numero.txt"); //Abrir request el el que le indicamos el metodo que queremos utilizar y la Url que queremos solicitar
 
@@ -51,16 +25,19 @@ req.onerror = () => {
 
 req.send(); // OK
 
+
+
+
 /*
-/*
-02  Example 1.1
+EXAMPLE 2
 */
+
 const req = new XMLHttpRequest();
 req.open("GET", "./js/numero.txt"); //Abrir request el el que le indicamos el metodo qu queremos utilizar y la Url que queremos solicitar
 
 req.onload = () => {
   //Respuesta que tenemos de la peticion hacemos algo con ella
-  console.log(req.status, req.responseText); //Tenemos estas dos propiedades que ya se han cargado
+  console.log(req.status, req.responseText); // 200/5 Tenemos estas dos propiedades que ya se han cargado
 };
 
 req.onerror = () => {
@@ -71,8 +48,9 @@ req.send(); // send envia peticion  200 seria ok , y nos devuelve un "5" , el co
 
 
 
+
 /*
-02  Example2
+EXAMPLE 03
 */
 
 const req = new XMLHttpRequest();
@@ -90,20 +68,18 @@ req.onerror = () => {
 req.send(); //Esto nos dara un error 404 con la pagian tradicional
 //<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /16%20Promesas/js/numero.txt2</pre>\n</body>\n</html>\n'
 
+
 /*
-02  Example3
-Distinguiendo si status es igual a 200
-Esto seria el esqueleto Basico
+EXAMPLE 04
 */
 
+
 const req = new XMLHttpRequest();
-//req.open('GET', './js/numero.txt2') Error
 req.open("GET", "./js/numero.txt"); //5
 
 req.onload = () => {
-  //  console.log(req.status, req.responseText);
   if (req.status === 200) {
-    console.log(req.responseText);
+    console.log(req.responseText);//5
   } else {
     console.log("Error");
   }
@@ -116,8 +92,11 @@ req.onerror = () => {
 req.send(); //5
 
 
+
+
+
 /*
-02  Example4
+EXAMPLE 05
 Ejemplo de lo que se solia hacer
 */
 
@@ -130,9 +109,9 @@ req.open("GET", "./js/numero.txt");
 
 req.onload = () => {
   if (req.status === 200) {
-    let number = toNumber(req.responseText);
-    number = multiply(number);
-    print(number);
+    let number = toNumber(req.responseText);//5
+    number = multiply(number); //5 por 2
+    print(number);             // 10
   } else {
     console.log("Error");
   }
@@ -146,22 +125,12 @@ req.send(); //10
 
 
 
-/*
-------------------------------------------------------------
-03 
-REESCRIBIENDO CON CALLBACK
-------------------------------------------------------------
-*/
+
 
 /*
-03 01 
-//Crear una funcion pasando request /numero.txt
-
-Pero aqui nos viene un problema de usabilidad, yo quiero cargar archivo
-numero.txt, pero el comportamiento que quiero hacer a posteriori quiero pasarselo como funcion, como callback
-Y tambien quiero pasarle como callback el error
+EXAMPLE 06
+Reescribiendo con callback, creando funcion pasando el ./js/numero.txt como parametro
 */
-
 const toNumber = (n) => Number(n);
 const multiply = (n) => n * 2;
 const print = (n) => console.log(n);
@@ -194,19 +163,18 @@ request("http://meloinvento.com"); //Error en la red .   Acceder a una direcion 
 
 
 
+
+
 /*
-3 02 Pasandoselo como funcion
-Como callback, y tambien quiero pasarle como callback el error
-Primero le pasamos como callback la funcion then 
-Ejemplo con Then 
-Pasarle como callback la funcion 
-Pasarle como callback el error
+EXAMPLE 07
+Creando funcion thenFn que pasamos como callback
 */
 
 const toNumber = (n) => Number(n);
 const multiply = (n) => n * 2;
 const print = (n) => console.log(n);
-
+//Creamos Funcion Thenfn que nos multiplica el numero
+//pasandole el req.responseText
 const thenFn = (n) => {
   //Pasamos funcion then que recibe un number
   let number = toNumber(n);
@@ -220,8 +188,7 @@ const request = (url, then) => {
 
   req.onload = () => {
     if (req.status === 200) {
-      then(req.responseText); //Aqui ejecuto then con req.responseText,req.responseText
-      //seria el number de la funcion thenFn
+      then(req.responseText); //Aqui recibimod el callback  thenFn, que pilla el parametro req.responseText
     } else {
       console.log("Error al cargar");
     }
@@ -235,12 +202,11 @@ const request = (url, then) => {
 };
 request("./js/numero.txt", thenFn); //Pasamos el Thenfn
 
-
-
 /*
-03 03
-Pasando una funcion de catch como callback
+EXAMPLE 08
+Creando funcion Catch y pasandola como callback
 */
+
 const toNumber = (n) => Number(n);
 const multiply = (n) => n * 2;
 const print = (n) => console.log(n);
@@ -251,11 +217,12 @@ const thenFn = (n) => {
   print(number);
 };
 
+//Funcion catchandprint
 const catchAndPrint = (err) => console.log(err); //Funcion de catch
-console.log(catchAndPrint);
+
 
 const request = (url, then, catchFn) => {
-  //catchfn no le podemos llamar catch porque esta reservada
+  //catchfn, no le podemos llamar catch porque esta reservada
   const req = new XMLHttpRequest();
   req.open("GET", url);
 
@@ -264,7 +231,7 @@ const request = (url, then, catchFn) => {
       then(req.responseText);
     } else {
       catchFn(new Error("error al cargar")); //Recomendables que estos catchs no lancen un mensaje como tal, sino que lancen un new error
-      //console.log('Error al cargar')
+      //aqui Recibimos el callback cachandprint
     }
   };
 
@@ -284,23 +251,10 @@ request("http://meloinvento.com/a,", thenFn, catchAndPrint);
 
 
 /*
-03 04 
-Ejemplo creando una funcion thenAlt
-Podriaamos crear otra funcion thenaAlt que seria un callback y el codigo , seria reutilizable
-simplemente estariamos pasando otro callback diferente el de thenAlt en vez de thenFn
-PROBLEMA ANIDANDO CALLBACKS
-El problema vendria cuando queremos anidar callbacks y muchos callbacks
-Ejemplo un callback que quiere otro callback y otro y otro
+EXAMPLE 09
+Creando otra funcion llamada  Thenalt que reutilizariamos
 
-
-El tener que hacer todo esto con callbacks generaba bastante problemas, cada uno lo hacia a su manera 
-no se acababa uno de poner de acuerdo con lo que era el standard , unos le llamaban then otros callback otros siguiente
-
-Entonces se dijo si esto viene a ser asi lo mismo es decir una funcion que se ejecute cuando todo va bien y otra cuando todo va mal
-
-Porque no proporcionamos un mecanismo standard para lograrlo pues esto son LAS PROMESAS
-
-
+Creando muchos callbacks genera el problema callback hell
 */
 
 const toNumber = (n) => Number(n);
